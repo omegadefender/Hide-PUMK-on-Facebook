@@ -1,7 +1,9 @@
 {
     "manifest_version": 2,
-    "name": "Test extension",
+    "name": "Hide Facebook's 'People you may know'",
     "version": "0.1",
+    "icons": { "128": "128.png",
+                "48": "icon48.png" },
 
     "content_scripts": [
       {
