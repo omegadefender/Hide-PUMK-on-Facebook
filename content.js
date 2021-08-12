@@ -3,7 +3,9 @@ const config = { childList: true, subtree: true, characterData: true };
 
 let observer = new MutationObserver(function(mutations, observer) {
     mutations.forEach(function(mutation) {
-     if (mutation.addedNodes.length) {
+     let url = window.location.href;
+     if (mutation.addedNodes.length && url != 'https://www.facebook.com/friends') {
+        console.log(url);
         hidePUMK();
     }
   })
