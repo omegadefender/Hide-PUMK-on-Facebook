@@ -13,8 +13,11 @@ let observer = new MutationObserver(function(mutations, observer) {
 observer.observe(node, config);
 
 function hidePUMK() {
-  let pumkdiv = document.evaluate("//span[text() = 'People you may know']/../../../../../div", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-  if (pumkdiv.singleNodeValue != null) {
-      pumkdiv.singleNodeValue.remove();
+  let pumkdiv = document.querySelector('[aria-label="People you may know"]');
+  let xpath = "//span[text() = 'People you may know']/../../../../../../../.."
+  let pumkTextDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  if (pumkdiv != null) {
+      pumkdiv.remove();
+      pumkTextDiv.remove();
   } 
 }
