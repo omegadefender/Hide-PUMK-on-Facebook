@@ -8,7 +8,7 @@ let observer = new MutationObserver(function(mutations, observer) {
     const change = mutation.addedNodes.length
     if (change && url == 'https://www.facebook.com/') {
       checkOptions('pumk1', hidePUMK)
-      hideSuggestedGroups()
+      checkOptions('sugGroups', hideSuggestedGroups)
     }
     if (change && urlIdex != -1) {
       checkOptions('pumk2', hidePUMK)
@@ -33,10 +33,10 @@ function hidePUMK(value) {
   }
 }
 
-function hideSuggestedGroups() {
+function hideSuggestedGroups(value) {
   let xpath = "//span[text() = 'Suggested for you']/../../../../../../../../../../.."
   let sugGroupsDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (sugGroupsDiv != null) {
+  if (sugGroupsDiv != null && value) {
     sugGroupsDiv.remove()
     console.log("sugGroups Removed")
   }  
