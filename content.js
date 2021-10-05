@@ -5,7 +5,8 @@ let observer = new MutationObserver(function(mutations, observer) {
     mutations.forEach(function(mutation) {
      let url = window.location.href;
      if (mutation.addedNodes.length && url != 'https://www.facebook.com/friends') {
-        hidePUMK();
+        checkOptions('pumk2', hidePUMK)
+        //hidePUMK();
         hideSuggestedGroups();
     }
   })
@@ -13,12 +14,19 @@ let observer = new MutationObserver(function(mutations, observer) {
 
 observer.observe(node, config);
 
-function hidePUMK() {
+function checkOptions(key, callback) {
+  chrome.storage.sync.get(key, function(options) {
+    callback(options[key])
+  })
+}
+
+function hidePUMK(oVal) {
+  const optVal = oVal
   let pumkdiv = document.querySelector('[aria-label="People you may know"]');
   let xpath = "//span[text() = 'People you may know']/../../../../../../../..";
   let pumkTextDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
 
-  if (pumkdiv != null) {
+  if (pumkdiv != null && optVal) {
       pumkdiv.remove();
       pumkTextDiv.remove();
   }
@@ -27,6 +35,7 @@ function hidePUMK() {
 function hideSuggestedGroups() {
   let xpath = "//span[text() = 'Suggested for you']/../../../../../../../../../../..";
   let sugGroupsDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  
   if (sugGroupsDiv != null) {
     sugGroupsDiv.remove();
   }  
