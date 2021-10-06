@@ -3,10 +3,10 @@ const config = { childList: true, subtree: true }
 
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
-    const url = window.location.href;
-    const urlIdex = url.indexOf(".")
     const change = mutation.addedNodes.length
-    if (change && url == 'https://www.facebook.com/') {
+    const url = urlChopper(window.location.href)
+    const urlIdex = url.indexOf(".")   
+    if (change && url == '') {
       checkOptions('pumk1', hidePUMK)
       checkOptions('sugGroups', hideSuggestedGroups)
     }
@@ -24,18 +24,23 @@ function checkOptions(key, callback) {
   })
 }
 
+function urlChopper(url) {
+  const str = "https://www.facebook.com/"
+  const newurl = url.replace(str, '')
+  return newurl
+}
+
 function hidePUMK(value) {
   const xpath = "//span[text() = 'People you may know']/../../../../../../../.."
   const pumkDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (pumkDiv != null && value) {    
     pumkDiv.remove()
-    console.log("Pumk removed")
   }
 }
 
 function hideSuggestedGroups(value) {
-  let xpath = "//span[text() = 'Suggested for you']/../../../../../../../../../../.."
-  let sugGroupsDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  const xpath = "//span[text() = 'Suggested for you']/../../../../../../../../../../.."
+  const sugGroupsDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (sugGroupsDiv != null && value) {
     sugGroupsDiv.remove()
     console.log("sugGroups Removed")
