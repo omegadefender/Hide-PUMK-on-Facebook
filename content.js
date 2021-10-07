@@ -13,7 +13,7 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('rooms', rooms)
     }
     if (change && urlIdex != -1) {
-      checkOption('pumk2', hidePUMK)
+      checkOption('pumk2', pumk)
     }
   })
 });
