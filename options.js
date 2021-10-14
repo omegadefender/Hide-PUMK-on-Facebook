@@ -3,6 +3,7 @@ const saveButton = document.getElementById('save')
 function save_options() {
   const pumkNews = document.getElementById('pumk1').checked
   const pumkProfile = document.getElementById('pumk2').checked
+  const pumkFriends = document.getElementById('pumk3').checked
   const sfu = document.getElementById('sfu').checked
   const stories = document.getElementById('stories').checked
   const rooms = document.getElementById('rooms').checked
@@ -11,6 +12,7 @@ function save_options() {
   chrome.storage.sync.set({
     pumk1: pumkNews,
     pumk2: pumkProfile,
+    pumk3: pumkFriends,
     sfu: sfu,
     stories: stories,
     rooms: rooms,
@@ -29,6 +31,7 @@ function restore_options() {
   chrome.storage.sync.get({
     pumk1: true,
     pumk2: true,
+    pumk3: false,
     sfu: true,
     stories: true,
     rooms: true,
@@ -37,6 +40,7 @@ function restore_options() {
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
+    document.getElementById('pumk3').checked = items.pumk3
     document.getElementById('sfu').checked = items.sfu
     document.getElementById('stories').checked = items.stories
     document.getElementById('rooms').checked = items.rooms

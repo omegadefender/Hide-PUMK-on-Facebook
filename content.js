@@ -14,6 +14,9 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('cw', cw)
       checkOption('nmp', nmp)
     }
+    if (change > 0 && url == 'friends') {
+      checkOption('pumk3', pumk)
+    }
     if (change > 0 && urlIdex != -1) {
       checkOption('pumk2', pumk)
     }
@@ -34,11 +37,17 @@ function urlChopper(url) {
   return newurl
 }
 
-function pumk(setting) {
-  const xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
-  const pumkDiv = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (pumkDiv != null && setting) {    
-    pumkDiv.remove()
+function pumk(setting) {  
+  let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
+  let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  const url = urlChopper(window.location.href)
+  if (url != 'friends' && div != null && setting) {
+    div.remove()
+  }
+  else if (url == 'friends' && div != null && setting) {
+    let xpath = "//span[text() = 'People you may know']/ancestor::*[12]"
+    let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    div.remove()
   }
 }
 
@@ -47,7 +56,6 @@ function sfu(setting) {
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null && setting) {
     div.remove()
-    console.log("A 'Suggested for you' feature has been removed")
   }  
 }
 
@@ -71,13 +79,11 @@ function cw(setting) {
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null && setting) {
     div.remove()
-    console.log("Continue watching has been removed")
   }
 }
 
 function nmp(setting) {
   const div = document.querySelector('[role="article"]')
-  console.log(div)
   if (div != null && setting) {
     div.remove()
   }
