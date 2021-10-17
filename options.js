@@ -9,6 +9,7 @@ function save_options() {
   const rooms = document.getElementById('rooms').checked
   const cw = document.getElementById('cw').checked
   const nmp = document.getElementById('nmp').checked
+  const watchFeed = document.getElementById('watchFeed').checked
   chrome.storage.sync.set({
     pumk1: pumkNews,
     pumk2: pumkProfile,
@@ -17,13 +18,14 @@ function save_options() {
     stories: stories,
     rooms: rooms,
     cw: cw,
-    nmp: nmp
+    nmp: nmp,
+    watchFeed: watchFeed
   }, function() {
     const status = document.getElementById('status')
-    status.textContent = 'Options saved.'
+    status.textContent = 'Options saved. You may need to reload to see effects'
     setTimeout(function() {
       status.textContent = ''
-    }, 1000);
+    }, 2000);
   });
 }
   
@@ -36,7 +38,8 @@ function restore_options() {
     stories: true,
     rooms: true,
     cw: true,
-    nmp: true
+    nmp: true,
+    watchFeed: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
@@ -46,6 +49,7 @@ function restore_options() {
     document.getElementById('rooms').checked = items.rooms
     document.getElementById('cw').checked = items.cw
     document.getElementById('nmp').checked = items.nmp
+    document.getElementById('watchFeed').checked = items.watchFeed
   });
 }
   
