@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
     "name": "Facebook Fixer",
-    "version": "0.0.0.7",
-    "icons": { "128": "128.png",
-                "48": "48.png" },
+    "version": "0.0.0.8",
+    "icons": { "128": "spanner128x128.png",
+                "48": "spanner48.png" },
     "content_scripts": [
       {
       "matches": [

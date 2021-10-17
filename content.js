@@ -14,14 +14,20 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('cw', cw)
       checkOption('nmp', nmp)
     }
-    if (change > 0 && url == 'friends') {
+    else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)
     }
-    if (change > 0 && urlIdex != -1) {
+    else if (change > 0 && urlIdex != -1) {
       checkOption('pumk2', pumk)
     }
+    else if (change > 0 && url.includes("watch")) {
+      watchFeed()
+      }
+    else {
+      console.log("mutation observed but nothing to do")
+    }
   })
-});
+})
 
 observer.observe(node, config);
 
@@ -86,5 +92,13 @@ function nmp(setting) {
   const div = document.querySelector('[role="article"]')
   if (div != null && setting) {
     div.remove()
+  }
+}
+
+function watchFeed() {
+  const div = document.querySelector('[aria-label="Videos on Facebook Watch"]')
+  if (div != null) {
+    div.remove()
+    console.log("fired")
   }
 }
