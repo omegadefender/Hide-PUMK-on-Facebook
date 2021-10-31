@@ -5,7 +5,7 @@ let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     const change = mutation.addedNodes.length
     const url = urlChopper(window.location.href)
-    const urlIdex = url.indexOf(".")   
+    const urlIdex = url.indexOf(".")  
     if (change > 0 && url == '') {
       checkOption('pumk1', pumk)
       checkOption('sfu', sfu)
