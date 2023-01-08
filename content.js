@@ -9,8 +9,8 @@ let observer = new MutationObserver(function(mutations, observer) {
     if (change > 0 && url == '') {
       checkOption('pumk1', pumk)
       checkOption('sfu', sfu)
-      checkOption('stories', stories)
-      checkOption('rooms', rooms)
+      checkOption('storiesReelsRooms', storiesReelsRooms)
+      checkOption('reelsAndShortVideos', reelsAndShortVideos)
       checkOption('cw', cw)
     }
     else if (change > 0 && url == 'friends') {
@@ -59,7 +59,7 @@ function pumk() {
   }
 }
 
-//This function hides 'Suggested for you'
+//This function hides 'Suggested for you' from everywhere
 function sfu() {
   const xpath = "//span[text() = 'Suggested for you']/ancestor::*[17]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -68,17 +68,17 @@ function sfu() {
   }  
 }
 
-//This function hides 'Stories'
-function stories() {
-  const div = document.querySelector('[data-pagelet="Stories"]')
+//This funtion hides 'Stories/Reels/Rooms' from the top of the homepage
+function storiesReelsRooms() {
+  const div = document.querySelector('[data-pagelet="TopOfHome"]')
   if (div != null) {
     div.remove()
   }
 }
 
-//This function hides 'rooms'
-function rooms() {
-  const xpath = "//span[text() = 'Create Room']/ancestor::*[15]"
+//This funtion hides 'Reels and short videos'
+function reelsAndShortVideos() {
+  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[20]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
@@ -109,11 +109,3 @@ function groups() {
     div.remove()
   }
 }
-
-//This function hides 'No more posts'
-/*function nmp() {
-  const div = document.querySelector('[role="article"]')
-  if (div != null) {
-    div.remove()
-  }
-}*/

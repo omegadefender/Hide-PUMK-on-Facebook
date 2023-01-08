@@ -5,8 +5,8 @@ function save_options() {
   const pumkProfile = document.getElementById('pumk2').checked
   const pumkFriends = document.getElementById('pumk3').checked
   const sfu = document.getElementById('sfu').checked
-  const stories = document.getElementById('stories').checked
-  const rooms = document.getElementById('rooms').checked
+  const storiesReelsRooms = document.getElementById('storiesReelsRooms').checked
+  const reelsAndShortVideos = document.getElementById('reelsAndShortVideos').checked
   const cw = document.getElementById('cw').checked
   const watchFeed = document.getElementById('watchFeed').checked
   chrome.storage.sync.set({
@@ -14,8 +14,8 @@ function save_options() {
     pumk2: pumkProfile,
     pumk3: pumkFriends,
     sfu: sfu,
-    stories: stories,
-    rooms: rooms,
+    storiesReelsRooms: storiesReelsRooms,
+    reelsAndShortVideos: reelsAndShortVideos,
     cw: cw,
     watchFeed: watchFeed
   }, function() {
@@ -33,8 +33,8 @@ function restore_options() {
     pumk2: true,
     pumk3: false,
     sfu: true,
-    stories: true,
-    rooms: true,
+    storiesReelsRooms: true,
+    reelsAndShortVideos: true,
     cw: true,
     watchFeed: false
 }, function(items) {
@@ -42,8 +42,8 @@ function restore_options() {
     document.getElementById('pumk2').checked = items.pumk2
     document.getElementById('pumk3').checked = items.pumk3
     document.getElementById('sfu').checked = items.sfu
-    document.getElementById('stories').checked = items.stories
-    document.getElementById('rooms').checked = items.rooms
+    document.getElementById('storiesReelsRooms').checked = items.storiesReelsRooms
+    document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos
     document.getElementById('cw').checked = items.cw
     document.getElementById('watchFeed').checked = items.watchFeed
   });
