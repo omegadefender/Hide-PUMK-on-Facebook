@@ -44,6 +44,7 @@ function urlChopper(url) {
   const newurl = url.replace(str, '')
   return newurl
 }
+
 //This function hides 'People you may know'
 function pumk() {  
   let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
@@ -58,6 +59,7 @@ function pumk() {
     div.remove()
   }
 }
+
 //This function hides 'Suggested for you'
 function sfu() {
   const xpath = "//span[text() = 'Suggested for you']/ancestor::*[17]"
@@ -66,6 +68,7 @@ function sfu() {
     div.remove()
   }  
 }
+
 //This function hides 'Stories'
 function stories() {
   const div = document.querySelector('[data-pagelet="Stories"]')
@@ -73,6 +76,7 @@ function stories() {
     div.remove()
   }
 }
+
 //This function hides 'rooms'
 function rooms() {
   const xpath = "//span[text() = 'Create Room']/ancestor::*[15]"
@@ -81,7 +85,8 @@ function rooms() {
     div.remove()
   }
 }
-//This function hides 'Stories'
+
+//This function hides 'continue watching'
 function cw() {
   const xpath = "//span[text() = 'Continue watching']/ancestor::*[13]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -89,13 +94,7 @@ function cw() {
     div.remove()
   }
 }
-//This function hides 'No more posts'
-function nmp() {
-  const div = document.querySelector('[role="article"]')
-  if (div != null) {
-    div.remove()
-  }
-}
+
 //This function hides 'watch feed'
 function watchFeed() {
   const div = document.querySelector('[aria-label="Videos on Facebook Watch"]')
@@ -103,6 +102,7 @@ function watchFeed() {
     div.remove()
   }
 }
+
 //This function hides 'groups'
 function groups() {
   const div = document.querySelector('[aria-label="Preview of a group"]')
@@ -110,3 +110,11 @@ function groups() {
     div.remove()
   }
 }
+
+//This function hides 'No more posts'
+/*function nmp() {
+  const div = document.querySelector('[role="article"]')
+  if (div != null) {
+    div.remove()
+  }
+}*/
