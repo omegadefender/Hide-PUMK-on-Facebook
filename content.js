@@ -12,7 +12,6 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('stories', stories)
       checkOption('rooms', rooms)
       checkOption('cw', cw)
-      checkOption('nmp', nmp)
     }
     else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)

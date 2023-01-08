@@ -8,7 +8,6 @@ function save_options() {
   const stories = document.getElementById('stories').checked
   const rooms = document.getElementById('rooms').checked
   const cw = document.getElementById('cw').checked
-  const nmp = document.getElementById('nmp').checked
   const watchFeed = document.getElementById('watchFeed').checked
   chrome.storage.sync.set({
     pumk1: pumkNews,
@@ -18,7 +17,6 @@ function save_options() {
     stories: stories,
     rooms: rooms,
     cw: cw,
-    nmp: nmp,
     watchFeed: watchFeed
   }, function() {
     const status = document.getElementById('status')
@@ -38,7 +36,6 @@ function restore_options() {
     stories: true,
     rooms: true,
     cw: true,
-    nmp: true,
     watchFeed: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
@@ -48,7 +45,6 @@ function restore_options() {
     document.getElementById('stories').checked = items.stories
     document.getElementById('rooms').checked = items.rooms
     document.getElementById('cw').checked = items.cw
-    document.getElementById('nmp').checked = items.nmp
     document.getElementById('watchFeed').checked = items.watchFeed
   });
 }
