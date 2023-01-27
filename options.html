@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="options.css"/>
+    <script src="options.js"></script>
     <title>Zucker Options</title>
 </head>
 <body>
     <h1>Options for Zucker</h1>
+    <h4>Version 0.0.1.1</h4>
     <div id="status"></div>
     <button id="save">Save</button>
     <h3>Hide "People you may know" from...</h3>
@@ -33,11 +35,10 @@
     <label>
         <input type="checkbox" id="cw">Homepage (News Feed)
     </label>
-    <h3>Hide "Watch Feed" from...</h3>
+    <h3>Hide Watch Page links from...</h3>
     <label>
-        <input type="checkbox" id="watchFeed">Watch Pages
-        <p>WARNING: This will nuke your watch feed including videos under "your watchlist" on the right hand sidebar</p>
-    </label>  
-    <script src="options.js"></script>   
+        <input type="checkbox" id="watchFeed">All places
+        <p>This removes buttons linking to the Watch page from the top menu, and the rightside bar on the homepage</p>
+    </label>       
 </body>
 </html>

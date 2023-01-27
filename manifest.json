@@ -1,22 +1,22 @@
 {
-    "manifest_version": 3,
-    "name": "Zucker",
-    "version": "0.0.1.0",
-    "icons": { "128": "Spanner128x128.png",
-                "48": "Spanner48x48.png" },
-    "content_scripts": [
-      {
-      "matches": [
-        "https://www.facebook.com/*"
-      ],
-      "js": ["content.js"]
-      }
+  "manifest_version": 3,
+  "name": "Zucker",
+  "version": "0.0.1.1",
+  "icons": { "128": "Spanner128x128.png",
+              "48": "Spanner48x48.png" },
+  "content_scripts": [
+    {
+    "matches": [
+      "https://www.facebook.com/*"
     ],
-    "options_ui": {
-      "page": "options.html",
-      "open_in_tab": true
-    },
-    "permissions": [
-      "storage"
-    ]
-  }
+    "js": ["content.js"]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "permissions": [
+    "storage"
+  ]
+}

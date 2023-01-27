@@ -50,4 +50,6 @@ function restore_options() {
 }
   
 document.addEventListener('DOMContentLoaded', restore_options)
-saveButton.addEventListener('click', save_options)
+if (saveButton){
+  saveButton.addEventListener('click', save_options)
+}

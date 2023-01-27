@@ -1,3 +1,5 @@
+checkOption('watchFeed', watchFeed)
+
 const node = document.body
 const config = { childList: true, subtree: true }
 
@@ -5,7 +7,7 @@ let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     const change = mutation.addedNodes.length
     const url = urlChopper(window.location.href)
-    const urlIdex = url.indexOf(".")  
+    const urlIdex = url.indexOf(".")
     if (change > 0 && url == '') {
       checkOption('pumk1', pumk)
       checkOption('sfu', sfu)
@@ -19,9 +21,6 @@ let observer = new MutationObserver(function(mutations, observer) {
     else if (change > 0 && urlIdex != -1) {
       checkOption('pumk2', pumk)
     }
-    else if (change > 0 && url.includes("watch")) {
-      checkOption('watchFeed', watchFeed)
-      }
     else if (change > 0 && url == "groups/feed/") {
       groups()
     }
@@ -78,7 +77,7 @@ function storiesReelsRooms() {
 
 //This funtion hides 'Reels and short videos'
 function reelsAndShortVideos() {
-  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[20]"
+  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[17]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
@@ -96,10 +95,12 @@ function cw() {
 
 //This function hides 'watch feed'
 function watchFeed() {
-  const div = document.querySelector('[aria-label="Videos on Facebook Watch"]')
-  if (div != null) {
-    div.remove()
-  }
+  const watchLITopXPath = "//a[contains(@aria-label, 'Watch')]/ancestor::li"
+  const watchLITop = document.evaluate(watchLITopXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  const watchLIRightSideXPath = "//span[text() = 'Watch']/ancestor::li"
+  const watchLIRightSide = document.evaluate(watchLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  watchLITop.remove()
+  watchLIRightSide.remove() 
 }
 
 //This function hides 'groups'
