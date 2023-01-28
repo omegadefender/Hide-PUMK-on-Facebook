@@ -1,44 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="options.css"/>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="options.css"/>    
+        <title>Zucker Options</title>
+    </head>
+    <body>
+        <h1>Options for Zucker</h1>
+        <h4>Version 0.0.1.2</h4>
+        <div id="status"></div>
+        <button id="save">Save</button>
+        <h3>Hide "People you may know" from...</h3>
+        <label>
+            <input type="checkbox" id="pumk1">Homepage (News Feed)<br>
+            <input type="checkbox" id="pumk2">Profile Page<br>
+            <input type="checkbox" id="pumk3">Friends Page
+        </label>
+        <h3>Hide "Suggested for you" from...</h3>
+        <label>
+            <input type="checkbox" id="sfu">Homepage (News Feed)
+        </label>
+        <h3>Hide Stories/Reels/Rooms from...</h3>
+        <label>
+            <input type="checkbox" id="storiesReelsRooms">Homepage (News Feed)
+        </label>
+        <h3>Hide Reels and short videos from...</h3>
+        <label>
+            <input type="checkbox" id="reelsAndShortVideos">Homepage (News Feed)
+        </label>
+        <h3>Hide Reels from...</h3>
+        <label>
+            <input type="checkbox" id="reels">Homepage (right sidebar)
+        </label>
+        <h3>Hide "Continue watching" from...</h3>
+        <label>
+            <input type="checkbox" id="cw">Homepage (News Feed)
+        </label>
+        <h3>Hide Watch Page links from...</h3>
+        <label>
+            <input type="checkbox" id="watchFeed">All places
+            <p>This removes buttons linking to the Watch page from the top menu, and the rightside bar on the homepage</p>
+        </label>
+        <h3>Hide Groups</h3>
+        <label>
+            <input type="checkbox" id="groups">Homepage (right sidebar)
+        </label>       
+    </body>
     <script src="options.js"></script>
-    <title>Zucker Options</title>
-</head>
-<body>
-    <h1>Options for Zucker</h1>
-    <h4>Version 0.0.1.1</h4>
-    <div id="status"></div>
-    <button id="save">Save</button>
-    <h3>Hide "People you may know" from...</h3>
-    <label>
-        <input type="checkbox" id="pumk1">Homepage (News Feed)<br>
-        <input type="checkbox" id="pumk2">Profile Page<br>
-        <input type="checkbox" id="pumk3">Friends Page
-    </label>
-    <h3>Hide "Suggested for you" from...</h3>
-    <label>
-        <input type="checkbox" id="sfu">Homepage (News Feed)
-    </label>
-    <h3>Hide Stories/Reels/Rooms from...</h3>
-    <label>
-        <input type="checkbox" id="storiesReelsRooms">Homepage (News Feed)
-    </label>
-    <h3>Hide Reels and short videos from...</h3>
-    <label>
-        <input type="checkbox" id="reelsAndShortVideos">Homepage (News Feed)
-    </label>
-    <h3>Hide "Continue watching" from...</h3>
-    <label>
-        <input type="checkbox" id="cw">Homepage (News Feed)
-    </label>
-    <h3>Hide Watch Page links from...</h3>
-    <label>
-        <input type="checkbox" id="watchFeed">All places
-        <p>This removes buttons linking to the Watch page from the top menu, and the rightside bar on the homepage</p>
-    </label>       
-</body>
 </html>

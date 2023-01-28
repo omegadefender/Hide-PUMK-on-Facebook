@@ -1,4 +1,4 @@
-checkOption('watchFeed', watchFeed)
+checkOption('watchFeed', watch_top_menu)
 
 const node = document.body
 const config = { childList: true, subtree: true }
@@ -14,15 +14,15 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('storiesReelsRooms', storiesReelsRooms)
       checkOption('reelsAndShortVideos', reelsAndShortVideos)
       checkOption('cw', cw)
+      checkOption('watchFeed', watch_sidebar)
+      checkOption('reels', reels)
+      checkOption('groups', groups)      
     }
     else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)
     }
     else if (change > 0 && urlIdex != -1) {
       checkOption('pumk2', pumk)
-    }
-    else if (change > 0 && url == "groups/feed/") {
-      groups()
     }
   })
 })
@@ -84,6 +84,12 @@ function reelsAndShortVideos() {
   }
 }
 
+function reels() {
+  const reelsLIRightSideXPath = "//span[text() = 'Reels']/ancestor::li"
+  const reelsLIRightSide = document.evaluate(reelsLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  reelsLIRightSide.remove()
+}
+
 //This function hides 'continue watching'
 function cw() {
   const xpath = "//span[text() = 'Continue watching']/ancestor::*[13]"
@@ -94,19 +100,21 @@ function cw() {
 }
 
 //This function hides 'watch feed'
-function watchFeed() {
+function watch_sidebar() {  
+  const watchLIRightSideXPath = "//span[text() = 'Watch']/ancestor::li"
+  const watchLIRightSide = document.evaluate(watchLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue  
+  watchLIRightSide.remove() 
+}
+
+function watch_top_menu() {
   const watchLITopXPath = "//a[contains(@aria-label, 'Watch')]/ancestor::li"
   const watchLITop = document.evaluate(watchLITopXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  const watchLIRightSideXPath = "//span[text() = 'Watch']/ancestor::li"
-  const watchLIRightSide = document.evaluate(watchLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   watchLITop.remove()
-  watchLIRightSide.remove() 
 }
 
 //This function hides 'groups'
 function groups() {
-  const div = document.querySelector('[aria-label="Preview of a group"]')
-  if (div != null) {
-    div.remove()
-  }
+  const groupsLIRightSideXPath = "//span[text() = 'Groups']/ancestor::li"
+  const groupsLIRightSide = document.evaluate(groupsLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  groupsLIRightSide.remove()
 }
