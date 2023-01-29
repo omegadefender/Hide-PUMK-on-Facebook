@@ -11,6 +11,8 @@ function save_options() {
   const cw = document.getElementById('cw').checked
   const watchFeed = document.getElementById('watchFeed').checked
   const groups = document.getElementById('groups').checked
+  const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
+  const removeSeeLess = document.getElementById('removeSeeLess').checked
   chrome.storage.sync.set({
     pumk1: pumkNews,
     pumk2: pumkProfile,
@@ -21,7 +23,9 @@ function save_options() {
     reels: reels,
     cw: cw,
     watchFeed: watchFeed,
-    groups: groups
+    groups: groups,
+    autoClickSeeMore: autoClickSeeMore,
+    removeSeeLess: removeSeeLess
   }, function() {
     const status = document.getElementById('status')
     status.textContent = 'Options saved. You may need to reload to see effects'
@@ -42,7 +46,9 @@ function restore_options() {
     reels: false,
     cw: true,
     watchFeed: false,
-    groups: false
+    groups: false,
+    autoClickSeeMore: false,
+    removeSeeLess: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
@@ -54,6 +60,8 @@ function restore_options() {
     document.getElementById('cw').checked = items.cw
     document.getElementById('watchFeed').checked = items.watchFeed
     document.getElementById('groups').checked = items.groups
+    document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
+    document.getElementById('removeSeeLess').checked = items.removeSeeLess
   });
 }
   

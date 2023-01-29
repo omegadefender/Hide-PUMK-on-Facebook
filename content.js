@@ -14,6 +14,8 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('storiesReelsRooms', storiesReelsRooms)
       checkOption('reelsAndShortVideos', reelsAndShortVideos)
       checkOption('cw', cw)
+      checkOption('autoClickSeeMore', auto_click_see_more)
+      checkOption('removeSeeLess', remove_see_less)
       checkOption('watchFeed', watch_sidebar)
       checkOption('reels', reels)
       checkOption('groups', groups)      
@@ -85,9 +87,11 @@ function reelsAndShortVideos() {
 }
 
 function reels() {
-  const reelsLIRightSideXPath = "//span[text() = 'Reels']/ancestor::li"
-  const reelsLIRightSide = document.evaluate(reelsLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  reelsLIRightSide.remove()
+  const divXPath = "//span[text() = 'Reels']/ancestor::li"
+  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }  
 }
 
 //This function hides 'continue watching'
@@ -101,9 +105,11 @@ function cw() {
 
 //This function hides 'watch feed'
 function watch_sidebar() {  
-  const watchLIRightSideXPath = "//span[text() = 'Watch']/ancestor::li"
-  const watchLIRightSide = document.evaluate(watchLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue  
-  watchLIRightSide.remove() 
+  const divXPath = "//span[text() = 'Watch']/ancestor::li"
+  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
 }
 
 function watch_top_menu() {
@@ -114,7 +120,25 @@ function watch_top_menu() {
 
 //This function hides 'groups'
 function groups() {
-  const groupsLIRightSideXPath = "//span[text() = 'Groups']/ancestor::li"
-  const groupsLIRightSide = document.evaluate(groupsLIRightSideXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  groupsLIRightSide.remove()
+  const divXPath = "//span[text() = 'Groups']/ancestor::li"
+  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function auto_click_see_more() {
+  let divXPath = "//span[text() = 'See more']"
+  let div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.click()
+  }
+}
+
+function remove_see_less() {
+  const divXPath = "//span[text() = 'See less']/ancestor::*[9]"
+  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
 }
