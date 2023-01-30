@@ -1,4 +1,5 @@
-checkOption('watchFeed', watch_top_menu)
+checkOption('watchTopMenu', watch_top_menu)
+checkOption('gamingTopMenu', gaming_top_menu)
 
 const node = document.body
 const config = { childList: true, subtree: true }
@@ -8,7 +9,7 @@ let observer = new MutationObserver(function(mutations, observer) {
     const change = mutation.addedNodes.length
     const url = urlChopper(window.location.href)
     const urlIdex = url.indexOf(".")
-    if (change > 0 && url == '') {
+    if (change > 0 && (url == '' || url == '?sk=h_chr')) {
       checkOption('pumk1', pumk)
       checkOption('sfu', sfu)
       checkOption('storiesReelsRooms', storiesReelsRooms)
@@ -16,9 +17,33 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('cw', cw)
       checkOption('autoClickSeeMore', auto_click_see_more)
       checkOption('removeSeeLess', remove_see_less)
-      checkOption('watchFeed', watch_sidebar)
+      checkOption('findFriendsSidebar', find_friends_sidebar)
+      checkOption('mostRecentSidebar', most_recent_sidebar)
+      checkOption('groups', groups) 
+      checkOption('memoriesSidebar', memories_sidebar)
+      checkOption('watchSidebar', watch_sidebar)      
       checkOption('reels', reels)
-      checkOption('groups', groups)      
+      checkOption('suggestEdits', suggest_edits)
+      checkOption('gamingVideo', gaming_video)
+      checkOption('savedSidebar', saved_sidebar)
+      checkOption('eventsSidebar', events_sidebar)
+      checkOption('adCentreSidebar', ad_centre_sidebar)
+      checkOption('adsManagerSidebar', ads_manager_sidebar)
+      checkOption('bloodDonationsSidebar', blood_donations_sidebar)
+      checkOption('climateScienceCentre', climate_science_centre)
+      checkOption('crisisResponseSidebar', crisis_response_sidebar)
+      checkOption('emotionalHealthSidebar', emotional_health_sidebar)
+      checkOption('favouritesSidebar', favourites_sidebar)
+      checkOption('fundraisersSidebar', fundraisers_sidebar)
+      checkOption('liveVideosSidebar', live_videos_sidebar)
+      checkOption('marketplaceSidebar', marketplace_sidebar)
+      checkOption('messengerSidebar', messenger_sidebar)
+      checkOption('messengerKidsSidebar', messenger_kids_sidebar)
+      checkOption('metaQuestSidebar', meta_quest_sidebar)
+      checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
+      checkOption('pagesSidebar', pages_sidebar)
+      checkOption('playGamesSidebar', play_games_sidebar)
+      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)        
     }
     else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)
@@ -113,9 +138,9 @@ function watch_sidebar() {
 }
 
 function watch_top_menu() {
-  const watchLITopXPath = "//a[contains(@aria-label, 'Watch')]/ancestor::li"
-  const watchLITop = document.evaluate(watchLITopXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  watchLITop.remove()
+  const xPath = "//a[contains(@aria-label, 'Watch')]/ancestor::li"
+  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  li.remove()
 }
 
 //This function hides 'groups'
@@ -141,4 +166,202 @@ function remove_see_less() {
   if (div != null) {
     div.remove()
   }
+}
+
+function gaming_top_menu() {
+  const xPath = "//a[contains(@aria-label, 'Gaming')]/ancestor::li"
+  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  li.remove()
+}
+
+function find_friends_sidebar() {
+  const xPath = "//span[text() = 'Find friends']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function most_recent_sidebar() {
+  const xPath = "//span[text() = 'Most recent']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function memories_sidebar() {
+  const xPath = "//span[text() = 'Memories']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function suggest_edits() {
+  const xPath = "//span[text() = 'Suggest Edits']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function gaming_video() {
+  const xPath = "//span[text() = 'Gaming video']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function saved_sidebar() {
+  const xPath = "//span[text() = 'Saved']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function events_sidebar() {
+  const xPath = "//span[text() = 'Events']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function ad_centre_sidebar() {
+  const xPath = "//span[text() = 'Ad Centre']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function ads_manager_sidebar() {
+  const xPath = "//span[text() = 'Ads Manager']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function blood_donations_sidebar() {
+  const xPath = "//span[text() = 'Blood Donations']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function climate_science_centre() {
+  const xPath = "//span[text() = 'Climate Science Centre']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function crisis_response_sidebar() {
+  const xPath = "//span[text() = 'Crisis Response']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function emotional_health_sidebar() {
+  const xPath = "//span[text() = 'Emotional Health']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function favourites_sidebar() {
+  const xPath = "//span[text() = 'Favourites']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function fundraisers_sidebar() {
+  const xPath = "//span[text() = 'Fundraisers']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function live_videos_sidebar() {
+  const xPath = "//span[text() = 'Live videos']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function marketplace_sidebar() {
+  const xPath = "//span[text() = 'Marketplace']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function messenger_sidebar() {
+  const xPath = "//span[text() = 'Messenger']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function messenger_kids_sidebar() {
+  const xPath = "//span[text() = 'Messenger Kids']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function meta_quest_sidebar() {
+  const xPath = "//span[text() = 'Meta Quest']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function orders_payments_sidebar() {
+  const xPath = "//span[text() = 'Orders and payments']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function pages_sidebar() {
+  const xPath = "//span[text() = 'Pages']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function play_games_sidebar() {
+  const xPath = "//span[text() = 'Play games']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function recent_ad_activity_sidebar() {
+  const xPath = "//span[text() = 'Recent ad activity']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
 }
