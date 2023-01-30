@@ -17,6 +17,7 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('cw', cw)
       checkOption('autoClickSeeMore', auto_click_see_more)
       checkOption('removeSeeLess', remove_see_less)
+      checkOption('yourProfileSidebar', your_profile_sidebar)
       checkOption('findFriendsSidebar', find_friends_sidebar)
       checkOption('mostRecentSidebar', most_recent_sidebar)
       checkOption('groups', groups) 
@@ -360,6 +361,14 @@ function play_games_sidebar() {
 
 function recent_ad_activity_sidebar() {
   const xPath = "//span[text() = 'Recent ad activity']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
+}
+
+function your_profile_sidebar() {
+  const xPath = "//div[contains(@class, 'x1iyjqo2')]/ul[1]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()

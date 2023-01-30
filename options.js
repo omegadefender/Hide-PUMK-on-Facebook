@@ -39,6 +39,7 @@ function save_options() {
   const pagesSidebar = document.getElementById('pagesSidebar').checked
   const playGamesSidebar = document.getElementById('playGamesSidebar').checked
   const recentAdActivitySidebar = document.getElementById('recentAdActivitySidebar').checked
+  const yourProfileSidebar = document.getElementById('yourProfileSidebar').checked
 
   chrome.storage.sync.set({
     pumk1: pumkNews,
@@ -78,7 +79,8 @@ function save_options() {
     ordersPaymentsSidebar: ordersPaymentsSidebar,
     pagesSidebar: pagesSidebar,
     playGamesSidebar: playGamesSidebar,
-    recentAdActivitySidebar: recentAdActivitySidebar
+    recentAdActivitySidebar: recentAdActivitySidebar,
+    yourProfileSidebar: yourProfileSidebar
   }, function() {
     const status = document.getElementById('status')
     status.textContent = 'Options saved. You may need to reload to see effects'
@@ -127,7 +129,8 @@ function restore_options() {
     ordersPaymentsSidebar: false,
     pagesSidebar: false,
     playGamesSidebar: false,
-    recentAdActivitySidebar: false
+    recentAdActivitySidebar: false,
+    yourProfileSidebar: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
@@ -167,6 +170,7 @@ function restore_options() {
     document.getElementById('pagesSidebar').checked = items.pagesSidebar
     document.getElementById('playGamesSidebar').checked = items.playGamesSidebar
     document.getElementById('recentAdActivitySidebar').checked = items.recentAdActivitySidebar
+    document.getElementById('yourProfileSidebar').checked = items.yourProfileSidebar
   });
 }
   
