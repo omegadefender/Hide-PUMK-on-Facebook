@@ -368,7 +368,7 @@ function recent_ad_activity_sidebar() {
 }
 
 function your_profile_sidebar() {
-  const xPath = "//div[contains(@class, 'x1iyjqo2')]/ul[1]"
+  const xPath = "//div[@class='x1iyjqo2']/ul[1]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
