@@ -12,7 +12,7 @@ function save_options() {
   const watchTopMenu = document.getElementById('watchTopMenu').checked
   const watchSidebar = document.getElementById('watchSidebar').checked
   const groups = document.getElementById('groups').checked
-  const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
+  //const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
   const gamingTopMenu = document.getElementById('gamingTopMenu').checked
   const findFriendsSidebar = document.getElementById('findFriendsSidebar').checked
@@ -53,7 +53,7 @@ function save_options() {
     watchTopMenu: watchTopMenu,
     watchSidebar: watchSidebar,
     groups: groups,
-    autoClickSeeMore: autoClickSeeMore,
+    //autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
     gamingTopMenu: gamingTopMenu,
     findFriendsSidebar: findFriendsSidebar,
@@ -103,7 +103,7 @@ function restore_options() {
     watchTopMenu: false,
     watchSidebar: false,
     groups: false,
-    autoClickSeeMore: false,
+    //autoClickSeeMore: false,
     removeSeeLess: false,
     gamingTopMenu: false,
     findFriendsSidebar: false,
@@ -143,7 +143,7 @@ function restore_options() {
     document.getElementById('watchTopMenu').checked = items.watchTopMenu
     document.getElementById('watchSidebar').checked = items.watchSidebar
     document.getElementById('groups').checked = items.groups
-    document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
+    //document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
     document.getElementById('gamingTopMenu').checked = items.gamingTopMenu
     document.getElementById('findFriendsSidebar').checked = items.findFriendsSidebar
