@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Zucker",
-  "version": "0.0.1.4",
+  "version": "0.0.1.5",
   "icons": { "128": "Spanner128x128.png",
               "48": "Spanner48x48.png" },
   "content_scripts": [

@@ -6,7 +6,6 @@ const config = { childList: true, subtree: true }
 
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
-    console.log(mutation)
     const change = mutation.addedNodes.length
     const url = urlChopper(window.location.href)
     const urlIdex = url.indexOf(".")
@@ -16,7 +15,7 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('storiesReelsRooms', storiesReelsRooms)
       checkOption('reelsAndShortVideos', reelsAndShortVideos)
       checkOption('cw', cw)
-      //checkOption('autoClickSeeMore', auto_click_see_more) 
+      checkOption('autoClickSeeMore', auto_click_see_more) 
       checkOption('removeSeeLess', remove_see_less)
       checkOption('yourProfileSidebar', your_profile_sidebar)
       checkOption('findFriendsSidebar', find_friends_sidebar)
@@ -45,7 +44,8 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
       checkOption('pagesSidebar', pages_sidebar)
       checkOption('playGamesSidebar', play_games_sidebar)
-      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)             
+      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)
+      checkOption('storiesLeftSidebar', stories_left_sidebar)           
     }
     else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)
@@ -154,14 +154,13 @@ function groups() {
   } 
 }
 
-/*function auto_click_see_more() {
-  let divXPath = "//span[text() = 'See more']"
-  let div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+function auto_click_see_more() {
+  const divXPath = "//span[text() = 'See more']/ancestor::div[6]"
+  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
-    console.log('click more!')
-    setTimeout(div.click(), 1000000)
+    div.click()
   }
-}*/
+}
 
 function remove_see_less() {
   const divXPath = "//span[text() = 'See less']/ancestor::*[9]"
@@ -377,4 +376,12 @@ function your_profile_sidebar() {
   if (div != null) {
     div.remove()
   } 
+}
+
+function stories_left_sidebar() {
+  const xPath = "//span[text() = 'Stories']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
 }

@@ -12,7 +12,7 @@ function save_options() {
   const watchTopMenu = document.getElementById('watchTopMenu').checked
   const watchSidebar = document.getElementById('watchSidebar').checked
   const groups = document.getElementById('groups').checked
-  //const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
+  const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
   const gamingTopMenu = document.getElementById('gamingTopMenu').checked
   const findFriendsSidebar = document.getElementById('findFriendsSidebar').checked
@@ -40,6 +40,7 @@ function save_options() {
   const playGamesSidebar = document.getElementById('playGamesSidebar').checked
   const recentAdActivitySidebar = document.getElementById('recentAdActivitySidebar').checked
   const yourProfileSidebar = document.getElementById('yourProfileSidebar').checked
+  const storiesLeftSidebar = document.getElementById('storiesLeftSidebar').checked
 
   chrome.storage.sync.set({
     pumk1: pumkNews,
@@ -53,7 +54,7 @@ function save_options() {
     watchTopMenu: watchTopMenu,
     watchSidebar: watchSidebar,
     groups: groups,
-    //autoClickSeeMore: autoClickSeeMore,
+    autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
     gamingTopMenu: gamingTopMenu,
     findFriendsSidebar: findFriendsSidebar,
@@ -80,13 +81,14 @@ function save_options() {
     pagesSidebar: pagesSidebar,
     playGamesSidebar: playGamesSidebar,
     recentAdActivitySidebar: recentAdActivitySidebar,
-    yourProfileSidebar: yourProfileSidebar
+    yourProfileSidebar: yourProfileSidebar,
+    storiesLeftSidebar: storiesLeftSidebar
   }, function() {
     const status = document.getElementById('status')
     status.textContent = 'Options saved. You may need to reload to see effects'
     setTimeout(function() {
       status.textContent = ''
-    }, 3000);
+    }, 6000);
   });
 }
   
@@ -103,7 +105,7 @@ function restore_options() {
     watchTopMenu: false,
     watchSidebar: false,
     groups: false,
-    //autoClickSeeMore: false,
+    autoClickSeeMore: false,
     removeSeeLess: false,
     gamingTopMenu: false,
     findFriendsSidebar: false,
@@ -130,7 +132,8 @@ function restore_options() {
     pagesSidebar: false,
     playGamesSidebar: false,
     recentAdActivitySidebar: false,
-    yourProfileSidebar: false
+    yourProfileSidebar: false,
+    storiesLeftSidebar: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
@@ -143,7 +146,7 @@ function restore_options() {
     document.getElementById('watchTopMenu').checked = items.watchTopMenu
     document.getElementById('watchSidebar').checked = items.watchSidebar
     document.getElementById('groups').checked = items.groups
-    //document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
+    document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
     document.getElementById('gamingTopMenu').checked = items.gamingTopMenu
     document.getElementById('findFriendsSidebar').checked = items.findFriendsSidebar
@@ -171,6 +174,7 @@ function restore_options() {
     document.getElementById('playGamesSidebar').checked = items.playGamesSidebar
     document.getElementById('recentAdActivitySidebar').checked = items.recentAdActivitySidebar
     document.getElementById('yourProfileSidebar').checked = items.yourProfileSidebar
+    document.getElementById('storiesLeftSidebar').checked = items.storiesLeftSidebar
   });
 }
   
