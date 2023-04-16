@@ -53,6 +53,9 @@ let observer = new MutationObserver(function(mutations, observer) {
     else if (change > 0 && urlIdex != -1) {
       checkOption('pumk2', pumk)
     }
+    else if (change > 0 && url == 'groups/feed/') {
+      checkOption('suggestedPostsGroupsFeed', suggested_posts_groups_feed)
+    }
   })
 })
 
@@ -380,6 +383,15 @@ function your_profile_sidebar() {
 
 function stories_left_sidebar() {
   const xPath = "//span[text() = 'Stories']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+//hides suggested posts from public groups from the groups page feed
+function suggested_posts_groups_feed() {
+  const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[8]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()

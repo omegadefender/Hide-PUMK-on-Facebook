@@ -41,6 +41,7 @@ function save_options() {
   const recentAdActivitySidebar = document.getElementById('recentAdActivitySidebar').checked
   const yourProfileSidebar = document.getElementById('yourProfileSidebar').checked
   const storiesLeftSidebar = document.getElementById('storiesLeftSidebar').checked
+  const suggestedPostsGroupsFeed = document.getElementById('suggestedPostsGroupsFeed').checked
 
   chrome.storage.sync.set({
     pumk1: pumkNews,
@@ -82,7 +83,8 @@ function save_options() {
     playGamesSidebar: playGamesSidebar,
     recentAdActivitySidebar: recentAdActivitySidebar,
     yourProfileSidebar: yourProfileSidebar,
-    storiesLeftSidebar: storiesLeftSidebar
+    storiesLeftSidebar: storiesLeftSidebar,
+    suggestedPostsGroupsFeed: suggestedPostsGroupsFeed
   }, function() {
     const status = document.getElementById('status')
     status.textContent = 'Options saved. You may need to reload to see effects'
@@ -133,7 +135,8 @@ function restore_options() {
     playGamesSidebar: false,
     recentAdActivitySidebar: false,
     yourProfileSidebar: false,
-    storiesLeftSidebar: false
+    storiesLeftSidebar: false,
+    suggestedPostsGroupsFeed: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
@@ -175,6 +178,7 @@ function restore_options() {
     document.getElementById('recentAdActivitySidebar').checked = items.recentAdActivitySidebar
     document.getElementById('yourProfileSidebar').checked = items.yourProfileSidebar
     document.getElementById('storiesLeftSidebar').checked = items.storiesLeftSidebar
+    document.getElementById('suggestedPostsGroupsFeed').checked = items.suggestedPostsGroupsFeed
   });
 }
   
