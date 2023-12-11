@@ -1,4 +1,3 @@
-checkOption('watchTopMenu', watch_top_menu)
 checkOption('gamingTopMenu', gaming_top_menu)
 
 const node = document.body
@@ -11,8 +10,6 @@ let observer = new MutationObserver(function(mutations, observer) {
     const urlIdex = url.indexOf(".")
     if (change > 0 && (url == '' || url == '?sk=h_chr')) {
       checkOption('pumk1', pumk)
-      checkOption('sfu', sfu)
-      checkOption('storiesReelsRooms', storiesReelsRooms)
       checkOption('reelsAndShortVideos', reelsAndShortVideos)
       checkOption('cw', cw)
       checkOption('autoClickSeeMore', auto_click_see_more) 
@@ -22,8 +19,6 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('mostRecentSidebar', most_recent_sidebar)
       checkOption('groups', groups) 
       checkOption('memoriesSidebar', memories_sidebar)
-      checkOption('watchSidebar', watch_sidebar)      
-      checkOption('reels', reels)
       checkOption('suggestEdits', suggest_edits)
       checkOption('gamingVideo', gaming_video)
       checkOption('savedSidebar', saved_sidebar)
@@ -36,7 +31,6 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('emotionalHealthSidebar', emotional_health_sidebar)
       checkOption('favouritesSidebar', favourites_sidebar)
       checkOption('fundraisersSidebar', fundraisers_sidebar)
-      checkOption('liveVideosSidebar', live_videos_sidebar)
       checkOption('marketplaceSidebar', marketplace_sidebar)
       checkOption('messengerSidebar', messenger_sidebar)
       checkOption('messengerKidsSidebar', messenger_kids_sidebar)
@@ -44,8 +38,7 @@ let observer = new MutationObserver(function(mutations, observer) {
       checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
       checkOption('pagesSidebar', pages_sidebar)
       checkOption('playGamesSidebar', play_games_sidebar)
-      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)
-      checkOption('storiesLeftSidebar', stories_left_sidebar)           
+      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)       
     }
     else if (change > 0 && url == 'friends') {
       checkOption('pumk3', pumk)
@@ -90,23 +83,6 @@ function pumk() {
   }
 }
 
-//This function hides 'Suggested for you' from everywhere
-function sfu() {
-  const xpath = "//span[text() = 'Suggested for you']/ancestor::*[17]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  }  
-}
-
-//This funtion hides 'Stories/Reels/Rooms' from the top of the homepage
-function storiesReelsRooms() {
-  const div = document.querySelector('[data-pagelet="TopOfHome"]')
-  if (div != null) {
-    div.remove()
-  }
-}
-
 //This funtion hides 'Reels and short videos'
 function reelsAndShortVideos() {
   const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[17]"
@@ -114,14 +90,6 @@ function reelsAndShortVideos() {
   if (div != null) {
     div.remove()
   }
-}
-
-function reels() {
-  const divXPath = "//span[text() = 'Reels']/ancestor::li"
-  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  }  
 }
 
 //This function hides 'continue watching'
@@ -140,12 +108,6 @@ function watch_sidebar() {
   if (div != null) {
     div.remove()
   } 
-}
-
-function watch_top_menu() {
-  const xPath = "//a[contains(@aria-label, 'Watch')]/ancestor::li"
-  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  li.remove()
 }
 
 //This function hides 'groups'
@@ -301,14 +263,6 @@ function fundraisers_sidebar() {
   } 
 }
 
-function live_videos_sidebar() {
-  const xPath = "//span[text() = 'Live videos']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
 function marketplace_sidebar() {
   const xPath = "//span[text() = 'Marketplace']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -379,14 +333,6 @@ function your_profile_sidebar() {
   if (div != null) {
     div.remove()
   } 
-}
-
-function stories_left_sidebar() {
-  const xPath = "//span[text() = 'Stories']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  }
 }
 
 //hides suggested posts from public groups from the groups page feed

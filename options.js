@@ -4,13 +4,8 @@ function save_options() {
   const pumkNews = document.getElementById('pumk1').checked
   const pumkProfile = document.getElementById('pumk2').checked
   const pumkFriends = document.getElementById('pumk3').checked
-  const sfu = document.getElementById('sfu').checked
-  const storiesReelsRooms = document.getElementById('storiesReelsRooms').checked
   const reelsAndShortVideos = document.getElementById('reelsAndShortVideos').checked
-  const reels = document.getElementById('reels').checked
   const cw = document.getElementById('cw').checked
-  const watchTopMenu = document.getElementById('watchTopMenu').checked
-  const watchSidebar = document.getElementById('watchSidebar').checked
   const groups = document.getElementById('groups').checked
   const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
@@ -30,7 +25,6 @@ function save_options() {
   const emotionalHealthSidebar = document.getElementById('emotionalHealthSidebar').checked
   const favouritesSidebar = document.getElementById('favouritesSidebar').checked
   const fundraisersSidebar = document.getElementById('fundraisersSidebar').checked
-  const liveVideosSidebar = document.getElementById('liveVideosSidebar').checked
   const marketplaceSidebar = document.getElementById('marketplaceSidebar').checked
   const messengerSidebar = document.getElementById('messengerSidebar').checked
   const messengerKidsSidebar = document.getElementById('messengerKidsSidebar').checked
@@ -40,20 +34,14 @@ function save_options() {
   const playGamesSidebar = document.getElementById('playGamesSidebar').checked
   const recentAdActivitySidebar = document.getElementById('recentAdActivitySidebar').checked
   const yourProfileSidebar = document.getElementById('yourProfileSidebar').checked
-  const storiesLeftSidebar = document.getElementById('storiesLeftSidebar').checked
   const suggestedPostsGroupsFeed = document.getElementById('suggestedPostsGroupsFeed').checked
 
   chrome.storage.sync.set({
     pumk1: pumkNews,
     pumk2: pumkProfile,
     pumk3: pumkFriends,
-    sfu: sfu,
-    storiesReelsRooms: storiesReelsRooms,
     reelsAndShortVideos: reelsAndShortVideos,
-    reels: reels,
     cw: cw,
-    watchTopMenu: watchTopMenu,
-    watchSidebar: watchSidebar,
     groups: groups,
     autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
@@ -73,7 +61,6 @@ function save_options() {
     emotionalHealthSidebar: emotionalHealthSidebar,
     favouritesSidebar: favouritesSidebar,
     fundraisersSidebar: fundraisersSidebar,
-    liveVideosSidebar: liveVideosSidebar,
     marketplaceSidebar: marketplaceSidebar,
     messengerSidebar: messengerSidebar,
     messengerKidsSidebar: messengerKidsSidebar,
@@ -83,7 +70,6 @@ function save_options() {
     playGamesSidebar: playGamesSidebar,
     recentAdActivitySidebar: recentAdActivitySidebar,
     yourProfileSidebar: yourProfileSidebar,
-    storiesLeftSidebar: storiesLeftSidebar,
     suggestedPostsGroupsFeed: suggestedPostsGroupsFeed
   }, function() {
     const status = document.getElementById('status')
@@ -99,13 +85,8 @@ function restore_options() {
     pumk1: true,
     pumk2: true,
     pumk3: false,
-    sfu: true,
-    storiesReelsRooms: true,
     reelsAndShortVideos: true,
-    reels: false,
     cw: true,
-    watchTopMenu: false,
-    watchSidebar: false,
     groups: false,
     autoClickSeeMore: false,
     removeSeeLess: false,
@@ -125,7 +106,6 @@ function restore_options() {
     emotionalHealthSidebar: false,
     favouritesSidebar: false,
     fundraisersSidebar: false,
-    liveVideosSidebar: false,
     marketplaceSidebar: false,
     messengerSidebar: false,
     messengerKidsSidebar: false,
@@ -135,19 +115,13 @@ function restore_options() {
     playGamesSidebar: false,
     recentAdActivitySidebar: false,
     yourProfileSidebar: false,
-    storiesLeftSidebar: false,
     suggestedPostsGroupsFeed: false
 }, function(items) {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
     document.getElementById('pumk3').checked = items.pumk3
-    document.getElementById('sfu').checked = items.sfu
-    document.getElementById('storiesReelsRooms').checked = items.storiesReelsRooms
     document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos
-    document.getElementById('reels').checked = items.reels
     document.getElementById('cw').checked = items.cw
-    document.getElementById('watchTopMenu').checked = items.watchTopMenu
-    document.getElementById('watchSidebar').checked = items.watchSidebar
     document.getElementById('groups').checked = items.groups
     document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
@@ -167,7 +141,6 @@ function restore_options() {
     document.getElementById('emotionalHealthSidebar').checked = items.emotionalHealthSidebar
     document.getElementById('favouritesSidebar').checked = items.favouritesSidebar
     document.getElementById('fundraisersSidebar').checked = items.fundraisersSidebar
-    document.getElementById('liveVideosSidebar').checked = items.liveVideosSidebar
     document.getElementById('marketplaceSidebar').checked = items.marketplaceSidebar
     document.getElementById('messengerSidebar').checked = items.messengerSidebar
     document.getElementById('messengerKidsSidebar').checked = items.messengerKidsSidebar
@@ -177,7 +150,6 @@ function restore_options() {
     document.getElementById('playGamesSidebar').checked = items.playGamesSidebar
     document.getElementById('recentAdActivitySidebar').checked = items.recentAdActivitySidebar
     document.getElementById('yourProfileSidebar').checked = items.yourProfileSidebar
-    document.getElementById('storiesLeftSidebar').checked = items.storiesLeftSidebar
     document.getElementById('suggestedPostsGroupsFeed').checked = items.suggestedPostsGroupsFeed
   });
 }
