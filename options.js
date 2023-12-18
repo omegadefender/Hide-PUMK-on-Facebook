@@ -1,6 +1,7 @@
 const saveButton = document.getElementById('save')
 
 function save_options() {
+  const videoTopMenu = document.getElementById('videoTopMenu').checked
   const pumkNews = document.getElementById('pumk1').checked
   const pumkProfile = document.getElementById('pumk2').checked
   const pumkFriends = document.getElementById('pumk3').checked
@@ -9,7 +10,6 @@ function save_options() {
   const groups = document.getElementById('groups').checked
   const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
-  const gamingTopMenu = document.getElementById('gamingTopMenu').checked
   const findFriendsSidebar = document.getElementById('findFriendsSidebar').checked
   const mostRecentSidebar = document.getElementById('mostRecentSidebar').checked
   const memoriesSidebar = document.getElementById('memoriesSidebar').checked
@@ -37,6 +37,7 @@ function save_options() {
   const suggestedPostsGroupsFeed = document.getElementById('suggestedPostsGroupsFeed').checked
 
   chrome.storage.sync.set({
+    videoTopMenu: videoTopMenu,
     pumk1: pumkNews,
     pumk2: pumkProfile,
     pumk3: pumkFriends,
@@ -45,7 +46,6 @@ function save_options() {
     groups: groups,
     autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
-    gamingTopMenu: gamingTopMenu,
     findFriendsSidebar: findFriendsSidebar,
     mostRecentSidebar: mostRecentSidebar,
     memoriesSidebar: memoriesSidebar,
@@ -82,6 +82,7 @@ function save_options() {
   
 function restore_options() {
   chrome.storage.sync.get({
+    videoTopMenu: true,
     pumk1: true,
     pumk2: true,
     pumk3: false,
@@ -90,7 +91,6 @@ function restore_options() {
     groups: false,
     autoClickSeeMore: false,
     removeSeeLess: false,
-    gamingTopMenu: false,
     findFriendsSidebar: false,
     mostRecentSidebar: false,
     memoriesSidebar: false,
@@ -116,7 +116,8 @@ function restore_options() {
     recentAdActivitySidebar: false,
     yourProfileSidebar: false,
     suggestedPostsGroupsFeed: false
-}, function(items) {
+}, function(items) {  
+    document.getElementById('videoTopMenu').checked = items.videoTopMenu
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
     document.getElementById('pumk3').checked = items.pumk3
@@ -125,7 +126,6 @@ function restore_options() {
     document.getElementById('groups').checked = items.groups
     document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
-    document.getElementById('gamingTopMenu').checked = items.gamingTopMenu
     document.getElementById('findFriendsSidebar').checked = items.findFriendsSidebar
     document.getElementById('mostRecentSidebar').checked = items.mostRecentSidebar
     document.getElementById('memoriesSidebar').checked = items.memoriesSidebar

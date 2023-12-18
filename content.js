@@ -1,59 +1,61 @@
-checkOption('gamingTopMenu', gaming_top_menu)
+checkOption('videoTopMenu', videoTopMenu)
 
 const node = document.body
 const config = { childList: true, subtree: true }
 
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
-    const change = mutation.addedNodes.length
-    const url = urlChopper(window.location.href)
-    const urlIdex = url.indexOf(".")
-    if (change > 0 && (url == '' || url == '?sk=h_chr')) {
-      checkOption('pumk1', pumk)
-      checkOption('reelsAndShortVideos', reelsAndShortVideos)
-      checkOption('cw', cw)
-      checkOption('autoClickSeeMore', auto_click_see_more) 
-      checkOption('removeSeeLess', remove_see_less)
-      checkOption('yourProfileSidebar', your_profile_sidebar)
-      checkOption('findFriendsSidebar', find_friends_sidebar)
-      checkOption('mostRecentSidebar', most_recent_sidebar)
-      checkOption('groups', groups) 
-      checkOption('memoriesSidebar', memories_sidebar)
-      checkOption('suggestEdits', suggest_edits)
-      checkOption('gamingVideo', gaming_video)
-      checkOption('savedSidebar', saved_sidebar)
-      checkOption('eventsSidebar', events_sidebar)
-      checkOption('adCentreSidebar', ad_centre_sidebar)
-      checkOption('adsManagerSidebar', ads_manager_sidebar)
-      checkOption('bloodDonationsSidebar', blood_donations_sidebar)
-      checkOption('climateScienceCentre', climate_science_centre)
-      checkOption('crisisResponseSidebar', crisis_response_sidebar)
-      checkOption('emotionalHealthSidebar', emotional_health_sidebar)
-      checkOption('favouritesSidebar', favourites_sidebar)
-      checkOption('fundraisersSidebar', fundraisers_sidebar)
-      checkOption('marketplaceSidebar', marketplace_sidebar)
-      checkOption('messengerSidebar', messenger_sidebar)
-      checkOption('messengerKidsSidebar', messenger_kids_sidebar)
-      checkOption('metaQuestSidebar', meta_quest_sidebar)
-      checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
-      checkOption('pagesSidebar', pages_sidebar)
-      checkOption('playGamesSidebar', play_games_sidebar)
-      checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)       
-    }
-    else if (change > 0 && url == 'friends') {
-      checkOption('pumk3', pumk)
-    }
-    else if (change > 0 && urlIdex != -1) {
-      checkOption('pumk2', pumk)
-    }
-    else if (change > 0 && url == 'groups/feed/') {
-      checkOption('suggestedPostsGroupsFeed', suggested_posts_groups_feed)
+    if (mutation.addedNodes.length > 0) {
+      const url = urlChopper(window.location.href)
+      const urlIdex = url.indexOf(".")
+      if ((url == '' || url == '?sk=h_chr')) {
+        checkOption('pumk1', pumk)
+        checkOption('reelsAndShortVideos', reelsAndShortVideos)
+        checkOption('cw', cw)
+        checkOption('autoClickSeeMore', auto_click_see_more) 
+        checkOption('removeSeeLess', remove_see_less)
+        checkOption('yourProfileSidebar', your_profile_sidebar)
+        checkOption('findFriendsSidebar', find_friends_sidebar)
+        checkOption('mostRecentSidebar', most_recent_sidebar)
+        checkOption('groups', groups) 
+        checkOption('memoriesSidebar', memories_sidebar)
+        checkOption('suggestEdits', suggest_edits)
+        checkOption('gamingVideo', gaming_video)
+        checkOption('savedSidebar', saved_sidebar)
+        checkOption('eventsSidebar', events_sidebar)
+        checkOption('adCentreSidebar', ad_centre_sidebar)
+        checkOption('adsManagerSidebar', ads_manager_sidebar)
+        checkOption('bloodDonationsSidebar', blood_donations_sidebar)
+        checkOption('climateScienceCentre', climate_science_centre)
+        checkOption('crisisResponseSidebar', crisis_response_sidebar)
+        checkOption('emotionalHealthSidebar', emotional_health_sidebar)
+        checkOption('favouritesSidebar', favourites_sidebar)
+        checkOption('fundraisersSidebar', fundraisers_sidebar)
+        checkOption('marketplaceSidebar', marketplace_sidebar)
+        checkOption('messengerSidebar', messenger_sidebar)
+        checkOption('messengerKidsSidebar', messenger_kids_sidebar)
+        checkOption('metaQuestSidebar', meta_quest_sidebar)
+        checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
+        checkOption('pagesSidebar', pages_sidebar)
+        checkOption('playGamesSidebar', play_games_sidebar)
+        checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)       
+      }
+      else if (url == 'friends') {
+        checkOption('pumk3', pumk)
+      }
+      else if (urlIdex != -1) {
+        checkOption('pumk2', pumk)
+      }
+      else if (url == 'groups/feed/') {
+        checkOption('suggestedPostsGroupsFeed', suggested_posts_groups_feed)
+      }      
     }
   })
 })
 
 observer.observe(node, config);
 
+//Helper functions
 function checkOption(key, callback) {
   chrome.storage.sync.get(key, function(options) {
     if (options[key]) {
@@ -66,6 +68,15 @@ function urlChopper(url) {
   const str = "https://www.facebook.com/"
   const newurl = url.replace(str, '')
   return newurl
+}
+
+//Top Menu options
+function videoTopMenu() {
+  const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
+  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (li != null) {
+    li.remove()
+  } 
 }
 
 //This function hides 'People you may know'
@@ -101,15 +112,6 @@ function cw() {
   }
 }
 
-//This function hides 'watch feed'
-function watch_sidebar() {  
-  const divXPath = "//span[text() = 'Watch']/ancestor::li"
-  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
 //This function hides 'groups'
 function groups() {
   const divXPath = "//span[text() = 'Groups']/ancestor::li"
@@ -133,14 +135,6 @@ function remove_see_less() {
   if (div != null) {
     div.remove()
   }
-}
-
-function gaming_top_menu() {
-  const xPath = "//a[contains(@aria-label, 'Gaming')]/ancestor::li"
-  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (li != null) {
-    li.remove()
-  }  
 }
 
 function find_friends_sidebar() {
