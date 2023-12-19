@@ -1,5 +1,3 @@
-checkOption('videoTopMenu', videoTopMenu)
-
 const node = document.body
 const config = { childList: true, subtree: true }
 
@@ -8,28 +6,25 @@ let observer = new MutationObserver(function(mutations, observer) {
     if (mutation.addedNodes.length > 0) {
       const url = urlChopper(window.location.href)
       const urlIdex = url.indexOf(".")
+      checkOption('videoTopMenu', videoTopMenu)
       if ((url == '' || url == '?sk=h_chr')) {
-        checkOption('pumk1', pumk)
+        checkOption('pumk1', pumk)        
+        checkOption('suggestedForYou', suggestedForYou)
         checkOption('reelsAndShortVideos', reelsAndShortVideos)
-        checkOption('cw', cw)
+        checkOption('stories', stories)
         checkOption('autoClickSeeMore', auto_click_see_more) 
         checkOption('removeSeeLess', remove_see_less)
+        checkOption('videoSidebar', videoSidebar)
         checkOption('yourProfileSidebar', your_profile_sidebar)
         checkOption('findFriendsSidebar', find_friends_sidebar)
-        checkOption('mostRecentSidebar', most_recent_sidebar)
         checkOption('groups', groups) 
         checkOption('memoriesSidebar', memories_sidebar)
-        checkOption('suggestEdits', suggest_edits)
         checkOption('gamingVideo', gaming_video)
         checkOption('savedSidebar', saved_sidebar)
         checkOption('eventsSidebar', events_sidebar)
-        checkOption('adCentreSidebar', ad_centre_sidebar)
         checkOption('adsManagerSidebar', ads_manager_sidebar)
         checkOption('bloodDonationsSidebar', blood_donations_sidebar)
         checkOption('climateScienceCentre', climate_science_centre)
-        checkOption('crisisResponseSidebar', crisis_response_sidebar)
-        checkOption('emotionalHealthSidebar', emotional_health_sidebar)
-        checkOption('favouritesSidebar', favourites_sidebar)
         checkOption('fundraisersSidebar', fundraisers_sidebar)
         checkOption('marketplaceSidebar', marketplace_sidebar)
         checkOption('messengerSidebar', messenger_sidebar)
@@ -70,16 +65,7 @@ function urlChopper(url) {
   return newurl
 }
 
-//Top Menu options
-function videoTopMenu() {
-  const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
-  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (li != null) {
-    li.remove()
-  } 
-}
-
-//This function hides 'People you may know'
+//Hides 'People you may know' across the site
 function pumk() {  
   let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
   let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -94,7 +80,24 @@ function pumk() {
   }
 }
 
-//This funtion hides 'Reels and short videos'
+//Top Menu options
+function videoTopMenu() {
+  const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
+  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (li != null) {
+    li.remove()
+  } 
+}
+
+//Home Page Options
+function suggestedForYou() {
+  const xpath = "//span[text() = 'Suggested for you']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
 function reelsAndShortVideos() {
   const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[17]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -103,16 +106,14 @@ function reelsAndShortVideos() {
   }
 }
 
-//This function hides 'continue watching'
-function cw() {
-  const xpath = "//span[text() = 'Continue watching']/ancestor::*[13]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+function stories() {
+  const div = document.querySelector('[data-pagelet="Stories"]')
   if (div != null) {
     div.remove()
   }
 }
 
-//This function hides 'groups'
+//Side bar options
 function groups() {
   const divXPath = "//span[text() = 'Groups']/ancestor::li"
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -135,6 +136,14 @@ function remove_see_less() {
   if (div != null) {
     div.remove()
   }
+}
+
+function videoSidebar() {
+  const xPath = "//span[text() = 'Video']/ancestor::li"
+  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  } 
 }
 
 function find_friends_sidebar() {
@@ -235,14 +244,6 @@ function crisis_response_sidebar() {
 
 function emotional_health_sidebar() {
   const xPath = "//span[text() = 'Emotional Health']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
-function favourites_sidebar() {
-  const xPath = "//span[text() = 'Favourites']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()

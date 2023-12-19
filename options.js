@@ -5,25 +5,21 @@ function save_options() {
   const pumkNews = document.getElementById('pumk1').checked
   const pumkProfile = document.getElementById('pumk2').checked
   const pumkFriends = document.getElementById('pumk3').checked
+  const suggestedForYou = document.getElementById('suggestedForYou').checked
   const reelsAndShortVideos = document.getElementById('reelsAndShortVideos').checked
-  const cw = document.getElementById('cw').checked
+  const stories = document.getElementById('stories').checked
   const groups = document.getElementById('groups').checked
   const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
+  const videoSidebar = document.getElementById('videoSidebar').checked  
   const findFriendsSidebar = document.getElementById('findFriendsSidebar').checked
-  const mostRecentSidebar = document.getElementById('mostRecentSidebar').checked
   const memoriesSidebar = document.getElementById('memoriesSidebar').checked
-  const suggestEdits = document.getElementById('suggestEdits').checked
   const gamingVideo = document.getElementById('gamingVideo').checked
   const savedSidebar = document.getElementById('savedSidebar').checked
   const eventsSidebar = document.getElementById('eventsSidebar').checked
-  const adCentreSidebar = document.getElementById('adCentreSidebar').checked
   const adsManagerSidebar = document.getElementById('adsManagerSidebar').checked
   const bloodDonationsSidebar = document.getElementById('bloodDonationsSidebar').checked
   const climateScienceCentre = document.getElementById('climateScienceCentre').checked
-  const crisisResponseSidebar = document.getElementById('crisisResponseSidebar').checked
-  const emotionalHealthSidebar = document.getElementById('emotionalHealthSidebar').checked
-  const favouritesSidebar = document.getElementById('favouritesSidebar').checked
   const fundraisersSidebar = document.getElementById('fundraisersSidebar').checked
   const marketplaceSidebar = document.getElementById('marketplaceSidebar').checked
   const messengerSidebar = document.getElementById('messengerSidebar').checked
@@ -41,25 +37,21 @@ function save_options() {
     pumk1: pumkNews,
     pumk2: pumkProfile,
     pumk3: pumkFriends,
+    suggestedForYou: suggestedForYou,
     reelsAndShortVideos: reelsAndShortVideos,
-    cw: cw,
+    stories: stories,
     groups: groups,
     autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
+    videoSidebar: videoSidebar,
     findFriendsSidebar: findFriendsSidebar,
-    mostRecentSidebar: mostRecentSidebar,
     memoriesSidebar: memoriesSidebar,
-    suggestEdits: suggestEdits,
     gamingVideo: gamingVideo,
     savedSidebar: savedSidebar,
     eventsSidebar: eventsSidebar,
-    adCentreSidebar: adCentreSidebar,
     adsManagerSidebar: adsManagerSidebar,
     bloodDonationsSidebar: bloodDonationsSidebar,
     climateScienceCentre: climateScienceCentre,
-    crisisResponseSidebar: crisisResponseSidebar,
-    emotionalHealthSidebar: emotionalHealthSidebar,
-    favouritesSidebar: favouritesSidebar,
     fundraisersSidebar: fundraisersSidebar,
     marketplaceSidebar: marketplaceSidebar,
     messengerSidebar: messengerSidebar,
@@ -86,25 +78,21 @@ function restore_options() {
     pumk1: true,
     pumk2: true,
     pumk3: false,
+    suggestedForYou: true,
     reelsAndShortVideos: true,
-    cw: true,
+    stories: true,
     groups: false,
     autoClickSeeMore: false,
     removeSeeLess: false,
+    videoSidebar: false,
     findFriendsSidebar: false,
-    mostRecentSidebar: false,
     memoriesSidebar: false,
-    suggestEdits: false,
     gamingVideo: false,
     savedSidebar: false,
     eventsSidebar: false,
-    adCentreSidebar: false,
     adsManagerSidebar: false,
     bloodDonationsSidebar: false,
     climateScienceCentre: false,
-    crisisResponseSidebar: false,
-    emotionalHealthSidebar: false,
-    favouritesSidebar: false,
     fundraisersSidebar: false,
     marketplaceSidebar: false,
     messengerSidebar: false,
@@ -121,25 +109,22 @@ function restore_options() {
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
     document.getElementById('pumk3').checked = items.pumk3
-    document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos
-    document.getElementById('cw').checked = items.cw
+    document.getElementById('pumk3').checked = items.pumk3
+    document.getElementById('suggestedForYou').checked = items.suggestedForYou
+    document.getElementById('stories').checked = items.stories
+    document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos    
     document.getElementById('groups').checked = items.groups
     document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
+    document.getElementById('videoSidebar').checked = items.videoSidebar
     document.getElementById('findFriendsSidebar').checked = items.findFriendsSidebar
-    document.getElementById('mostRecentSidebar').checked = items.mostRecentSidebar
     document.getElementById('memoriesSidebar').checked = items.memoriesSidebar
-    document.getElementById('suggestEdits').checked = items.suggestEdits
     document.getElementById('gamingVideo').checked = items.gamingVideo
     document.getElementById('savedSidebar').checked = items.savedSidebar
     document.getElementById('eventsSidebar').checked = items.eventsSidebar
-    document.getElementById('adCentreSidebar').checked = items.adCentreSidebar
     document.getElementById('adsManagerSidebar').checked = items.adsManagerSidebar
     document.getElementById('bloodDonationsSidebar').checked = items.bloodDonationsSidebar
     document.getElementById('climateScienceCentre').checked = items.climateScienceCentre
-    document.getElementById('crisisResponseSidebar').checked = items.crisisResponseSidebar
-    document.getElementById('emotionalHealthSidebar').checked = items.emotionalHealthSidebar
-    document.getElementById('favouritesSidebar').checked = items.favouritesSidebar
     document.getElementById('fundraisersSidebar').checked = items.fundraisersSidebar
     document.getElementById('marketplaceSidebar').checked = items.marketplaceSidebar
     document.getElementById('messengerSidebar').checked = items.messengerSidebar
