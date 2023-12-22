@@ -9,7 +9,8 @@
     </head>
     <body>
         <h1>Options for Zucker</h1>
-        <h4>Version 0.0.1.6</h4>
+        <h4>Version 0.0.1.7</h4>
+        <p>Submit a feature request or bug report on my <a href="https://github.com/omegadefender/Zucker/issues" target="_blank">Github Page</a></p4>
         <div id="status"></div>
         <button id="save">Save</button>
         <h3>Top Banner options</h3>
@@ -17,39 +18,89 @@
             <input type="checkbox" id="videoTopMenu">Video
         </label>   
         <h3>Homepage - News Feed options</h3>
-        <label>
-            <input type="checkbox" id="pumk1">Hide "People you may know"<br>
-            <input type="checkbox" id="suggestedForYou">Hide "Suggested for You"<br>            
-            <input type="checkbox" id="reelsAndShortVideos">Hide "Reels and short videos"<br>
-            <input type="checkbox" id="stories">Hide "stories"<br>                    
-        </label>
-        <br><hr>
+        <div>
+            <input type="checkbox" id="pumk1">
+            <label for="pumk1">Hide "People you may know"</label><br>
+            <input type="checkbox" id="suggestedForYou">
+            <label for="suggestedForYou">Hide "Suggested for You"</label><br>           
+            <input type="checkbox" id="reelsAndShortVideos">
+            <label>Hide "Reels and short videos"</label><br>
+            <input type="checkbox" id="stories">
+            <label>Hide "stories"</label>                             
+        </div><br>
+        <hr>
         <h3>Homepage - Lefthand Sidebar Options</h3>
-        <label>
-            <input type="checkbox" id="autoClickSeeMore">Auto click "See more" button
-            <input type="checkbox" id="removeSeeLess">Auto hide the "See less" button<br>
-            <input type="checkbox" id="yourProfileSidebar">Hide "Your Profile"
-            <input type="checkbox" id="findFriendsSidebar">Hide "Find friends"<br>
-            <input type="checkbox" id="videoSidebar">Hide "Video"    
-            <input type="checkbox" id="groups">Hide "Groups"<br>
-            <input type="checkbox" id="memoriesSidebar">Hide "Memories"
-            <input type="checkbox" id="gamingVideo">Hide "Gaming video"<br>
-            <input type="checkbox" id="savedSidebar">Hide "Saved"
-            <input type="checkbox" id="eventsSidebar">Hide "Events"<br>
-            <input type="checkbox" id="adsManagerSidebar">Hide "Ads Manager"
-            <input type="checkbox" id="bloodDonationsSidebar">Hide "Blood Donations"<br>
-            <input type="checkbox" id="climateScienceCentre">Hide "Climate Science Centre"
-            <input type="checkbox" id="fundraisersSidebar">Hide "Fundraisers"<br>
-            <input type="checkbox" id="marketplaceSidebar">Hide "Marketplace"
-            <input type="checkbox" id="messengerSidebar">Hide "Messenger"<br>
-            <input type="checkbox" id="messengerKidsSidebar">Hide "Messenger Kids"
-            <input type="checkbox" id="metaQuestSidebar">Hide "Meta Quest"<br>
-            <input type="checkbox" id="ordersPaymentsSidebar">Hide "Orders and payments"
-            <input type="checkbox" id="pagesSidebar">Hide "Pages"<br>
-            <input type="checkbox" id="playGamesSidebar">Hide "Play games"
-            <input type="checkbox" id="recentAdActivitySidebar">Hide "Recent ad activity"
-        </label>
-        <br><br><hr>  
+        <div class="row">
+            <div class="left">
+                <input type="checkbox" id="autoClickSeeMore">
+                <label for="autoClickSeeMore">Auto click "See more" button</label>
+                <br>
+                <input type="checkbox" id="pagesSidebar">
+                <label for="pagesSidebar">Hide "Pages"</label>
+                <br>
+                <input type="checkbox" id="adsManagerSidebar">
+                <label for="adsManagerSidebar">Hide "Ads Manager"</label>
+                <br>
+                <input type="checkbox" id="messengerSidebar">
+                <label for="messengerSidebar">Hide "Messenger"</label>
+                <br>
+                <input type="checkbox" id="yourProfileSidebar">
+                <label for="yourProfileSidebar">Hide "Your Profile"</label>
+                <br>
+                <input type="checkbox" id="groups">
+                <label for="groups">Hide "Groups"</label>
+                <br>
+                <input type="checkbox" id="videoSidebar">
+                <label for="videoSidebar">Hide "Video"</label>
+                <br>
+                <input type="checkbox" id="savedSidebar">
+                <label for="savedSidebar">Hide "Saved"</label>
+                <br>
+                <input type="checkbox" id="playGamesSidebar">
+                <label for="playGamesSidebar">Hide "Play games"</label>
+                <br>
+                <input type="checkbox" id="climateScienceCentre">
+                <label for="climateScienceCentre">Hide "Climate Science Centre"</label>
+                <br>
+                <input type="checkbox" id="bloodDonationsSidebar">
+                <label for="bloodDonationsSidebar">Hide "Blood Donations"</label>
+            </div>
+            <div>               
+                <input type="checkbox" id="removeSeeLess">
+                <label for="removeSeeLess">Auto hide the "See less" button</label>
+                <br>
+                <input type="checkbox" id="eventsSidebar">
+                <label for="eventsSidebar">Hide "Events"</label>
+                <br>                
+                <input type="checkbox" id="recentAdActivitySidebar">
+                <label for="recentAdActivitySidebar">Hide "Recent ad activity"</label>
+                <br>
+                <input type="checkbox" id="messengerKidsSidebar">
+                <label for="messengerKidsSidebar">Hide "Messenger Kids"</label>
+                <br>
+                <input type="checkbox" id="findFriendsSidebar">
+                <label for="findFriendsSidebar">Hide "Find friends"</label>
+                <br>
+                <input type="checkbox" id="memoriesSidebar">
+                <label for="memoriesSidebar">Hide "Memories"</label>
+                <br>
+                <input type="checkbox" id="marketplaceSidebar">
+                <label for="marketplaceSidebar">Hide "Marketplace"</label>
+                <br>
+                <input type="checkbox" id="ordersPaymentsSidebar">
+                <label for="ordersPaymentsSidebar">Hide "Orders and payments"</label>
+                <br>
+                <input type="checkbox" id="gamingVideo">
+                <label for="gamingVideo">Hide "Gaming video"</label>
+                <br>
+                <input type="checkbox" id="fundraisersSidebar">
+                <label for="fundraisersSidebar">Hide "Fundraisers"</label>
+                <br>
+                <input type="checkbox" id="metaQuestSidebar">
+                <label for="metaQuestSidebar">Hide "Meta Quest"</label>    
+            </div>           
+        </div>
+        <br><hr>  
         <h3>Friends Page options</h3>
         <label>
             <input type="checkbox" id="pumk3">Hide "People you may know"

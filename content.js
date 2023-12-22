@@ -154,24 +154,8 @@ function find_friends_sidebar() {
   } 
 }
 
-function most_recent_sidebar() {
-  const xPath = "//span[text() = 'Most recent']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
 function memories_sidebar() {
   const xPath = "//span[text() = 'Memories']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
-function suggest_edits() {
-  const xPath = "//span[text() = 'Suggest Edits']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
@@ -202,14 +186,6 @@ function events_sidebar() {
   } 
 }
 
-function ad_centre_sidebar() {
-  const xPath = "//span[text() = 'Ad Centre']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
 function ads_manager_sidebar() {
   const xPath = "//span[text() = 'Ads Manager']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -228,22 +204,6 @@ function blood_donations_sidebar() {
 
 function climate_science_centre() {
   const xPath = "//span[text() = 'Climate Science Centre']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
-function crisis_response_sidebar() {
-  const xPath = "//span[text() = 'Crisis Response']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  } 
-}
-
-function emotional_health_sidebar() {
-  const xPath = "//span[text() = 'Emotional Health']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
