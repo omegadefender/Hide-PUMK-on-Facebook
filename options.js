@@ -8,6 +8,14 @@ function save_options() {
   const suggestedForYou = document.getElementById('suggestedForYou').checked
   const reelsAndShortVideos = document.getElementById('reelsAndShortVideos').checked
   const stories = document.getElementById('stories').checked
+  const follow = document.getElementById('follow').checked
+  const videoPlaylist = document.getElementById('videoPlaylist').checked
+  const isIn = document.getElementById('isIn').checked
+  const isAt = document.getElementById('isAt').checked
+  const and = document.getElementById('and').checked
+  const sponsoredAd = document.getElementById('sponsoredAd').checked
+  const album = document.getElementById('album').checked
+  const addedANewPhotoToTheAlbum = document.getElementById('addedANewPhotoToTheAlbum').checked 
   const groups = document.getElementById('groups').checked
   const autoClickSeeMore = document.getElementById('autoClickSeeMore').checked
   const removeSeeLess = document.getElementById('removeSeeLess').checked
@@ -40,6 +48,14 @@ function save_options() {
     suggestedForYou: suggestedForYou,
     reelsAndShortVideos: reelsAndShortVideos,
     stories: stories,
+    follow: follow,
+    videoPlaylist: videoPlaylist,
+    isIn: isIn,
+    isAt: isAt,
+    and: and,
+    sponsoredAd: sponsoredAd,
+    album: album,
+    addedANewPhotoToTheAlbum: addedANewPhotoToTheAlbum,
     groups: groups,
     autoClickSeeMore: autoClickSeeMore,
     removeSeeLess: removeSeeLess,
@@ -81,6 +97,14 @@ function restore_options() {
     suggestedForYou: true,
     reelsAndShortVideos: true,
     stories: true,
+    follow: true,
+    videoPlaylist: true,
+    isIn: true,
+    isAt: true,
+    and: true,
+    sponsoredAd: true,
+    album: true,
+    addedANewPhotoToTheAlbum: true,
     groups: false,
     autoClickSeeMore: false,
     removeSeeLess: false,
@@ -112,6 +136,14 @@ function restore_options() {
     document.getElementById('pumk3').checked = items.pumk3
     document.getElementById('suggestedForYou').checked = items.suggestedForYou
     document.getElementById('stories').checked = items.stories
+    document.getElementById('follow').checked = items.follow
+    document.getElementById('videoPlaylist').checked = items.videoPlaylist
+    document.getElementById('isIn').checked = items.isIn
+    document.getElementById('isAt').checked = items.isAt
+    document.getElementById('and').checked = items.and
+    document.getElementById('sponsoredAd').checked = items.sponsoredAd
+    document.getElementById('album').checked = items.album
+    document.getElementById('addedANewPhotoToTheAlbum').checked = items.addedANewPhotoToTheAlbum                
     document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos    
     document.getElementById('groups').checked = items.groups
     document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore

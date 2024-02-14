@@ -33,7 +33,15 @@ let observer = new MutationObserver(function(mutations, observer) {
         checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
         checkOption('pagesSidebar', pages_sidebar)
         checkOption('playGamesSidebar', play_games_sidebar)
-        checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)       
+        checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)
+        checkOption('follow', follow)
+        checkOption('videoPlaylist', videoPlaylist)
+        checkOption('isIn', isIn)
+        checkOption('isAt', isAt)
+        checkOption('and', and)
+        checkOption('sponsoredAd', sponsoredAd)
+        checkOption('album', album)
+        checkOption('addedANewPhotoToTheAlbum', addedANewPhotoToTheAlbum)
       }
       else if (url == 'friends') {
         checkOption('pumk3', pumk)
@@ -112,6 +120,72 @@ function stories() {
     div.remove()
   }
 }
+
+function follow() {
+  const xpath = "//span[text() = 'Follow']/ancestor::*[26]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function videoPlaylist() {
+  const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function isIn() {
+  const xpath = "//span[text() = ' is in ']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function isAt() {
+  const xpath = "//span[text() = ' is at ']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function and() {
+  const xpath = "//span[text() = ' and ']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function sponsoredAd() {
+  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::*[4]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+  }
+}
+
+function album() {
+  const xpath = "//span[text() = 'Album ']/ancestor::*[22]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+    console.log("Album called")
+  }
+}
+
+function addedANewPhotoToTheAlbum() {
+  const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::*[24]"
+  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (div != null) {
+    div.remove()
+    console.log("added a new photo to the album")
+  }
+} 
 
 //Side bar options
 function groups() {
