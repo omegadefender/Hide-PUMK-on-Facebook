@@ -1,16 +1,46 @@
+//options sorting
+let nav_bar_options = []
+let home_page_options = []
+
+chrome.storage.sync.get(function(options) {
+  Object.keys(options).forEach(key => {
+    if (options[key]) {
+      if (key.includes("NavBar")) {
+        nav_bar_options.push(this[key])
+      } else if (key.includes("HomePage")) {
+        home_page_options.push(this[key])
+      }
+    }     
+  })    
+})
+
+console.log(nav_bar_options)
+console.log(home_page_options)
+
+//observer settings and operations
+function urlChopper(url) {
+  const str = "https://www.facebook.com/"
+  const newurl = url.replace(str, '')
+  return newurl
+}
+
 const node = document.body
 const config = { childList: true, subtree: true }
 
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     if (mutation.addedNodes.length > 0) {
+      nav_bar_options.forEach(function (filter) {
+        filter()
+      })
       const url = urlChopper(window.location.href)
       const urlIdex = url.indexOf(".")
-      checkOption('videoTopMenu', videoTopMenu)
       if ((url == '' || url == '?sk=h_chr')) {
+        home_page_options.forEach(function (filter) {
+          filter()
+        })
         checkOption('pumk1', pumk)        
         checkOption('suggestedForYou', suggestedForYou)
-        checkOption('reelsAndShortVideos', reelsAndShortVideos)
         checkOption('stories', stories)
         checkOption('autoClickSeeMore', auto_click_see_more) 
         checkOption('removeSeeLess', remove_see_less)
@@ -34,14 +64,13 @@ let observer = new MutationObserver(function(mutations, observer) {
         checkOption('pagesSidebar', pages_sidebar)
         checkOption('playGamesSidebar', play_games_sidebar)
         checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)
-        checkOption('follow', follow)
         checkOption('videoPlaylist', videoPlaylist)
         checkOption('isIn', isIn)
         checkOption('isAt', isAt)
         checkOption('and', and)
         checkOption('sponsoredAd', sponsoredAd)
         checkOption('album', album)
-        checkOption('addedANewPhotoToTheAlbum', addedANewPhotoToTheAlbum)
+        checkOption('addedANewPhotoToTheAlbum', addedANewPhotoToTheAlbum)        
       }
       else if (url == 'friends') {
         checkOption('pumk3', pumk)
@@ -67,12 +96,6 @@ function checkOption(key, callback) {
   })
 }
 
-function urlChopper(url) {
-  const str = "https://www.facebook.com/"
-  const newurl = url.replace(str, '')
-  return newurl
-}
-
 //Hides 'People you may know' across the site
 function pumk() {  
   let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
@@ -89,7 +112,7 @@ function pumk() {
 }
 
 //Top Menu options
-function videoTopMenu() {
+function videoNavBar() {
   const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
   const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (li != null) {
@@ -106,7 +129,7 @@ function suggestedForYou() {
   }
 }
 
-function reelsAndShortVideos() {
+function reelsAndShortVideosHomePage() {
   const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[17]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -121,7 +144,7 @@ function stories() {
   }
 }
 
-function follow() {
+function followHomePage() {
   const xpath = "//span[text() = 'Follow']/ancestor::*[26]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -174,7 +197,6 @@ function album() {
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log("Album called")
   }
 }
 
@@ -183,7 +205,6 @@ function addedANewPhotoToTheAlbum() {
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log("added a new photo to the album")
   }
 } 
 

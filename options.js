@@ -1,14 +1,14 @@
 const saveButton = document.getElementById('save')
 
 function save_options() {
-  const videoTopMenu = document.getElementById('videoTopMenu').checked
+  const videoNavBar = document.getElementById('videoNavBar').checked
   const pumkNews = document.getElementById('pumk1').checked
   const pumkProfile = document.getElementById('pumk2').checked
   const pumkFriends = document.getElementById('pumk3').checked
   const suggestedForYou = document.getElementById('suggestedForYou').checked
-  const reelsAndShortVideos = document.getElementById('reelsAndShortVideos').checked
+  const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked
   const stories = document.getElementById('stories').checked
-  const follow = document.getElementById('follow').checked
+  const followHomePage = document.getElementById('followHomePage').checked
   const videoPlaylist = document.getElementById('videoPlaylist').checked
   const isIn = document.getElementById('isIn').checked
   const isAt = document.getElementById('isAt').checked
@@ -41,14 +41,14 @@ function save_options() {
   const suggestedPostsGroupsFeed = document.getElementById('suggestedPostsGroupsFeed').checked
 
   chrome.storage.sync.set({
-    videoTopMenu: videoTopMenu,
+    videoNavBar: videoNavBar,
     pumk1: pumkNews,
     pumk2: pumkProfile,
     pumk3: pumkFriends,
     suggestedForYou: suggestedForYou,
-    reelsAndShortVideos: reelsAndShortVideos,
+    reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
     stories: stories,
-    follow: follow,
+    followHomePage: followHomePage,
     videoPlaylist: videoPlaylist,
     isIn: isIn,
     isAt: isAt,
@@ -90,14 +90,14 @@ function save_options() {
   
 function restore_options() {
   chrome.storage.sync.get({
-    videoTopMenu: true,
+    videoNavBar: true,
     pumk1: true,
     pumk2: true,
     pumk3: false,
     suggestedForYou: true,
-    reelsAndShortVideos: true,
+    reelsAndShortVideosHomePage: true,
     stories: true,
-    follow: true,
+    followHomePage: true,
     videoPlaylist: true,
     isIn: true,
     isAt: true,
@@ -129,14 +129,14 @@ function restore_options() {
     yourProfileSidebar: false,
     suggestedPostsGroupsFeed: false
 }, function(items) {  
-    document.getElementById('videoTopMenu').checked = items.videoTopMenu
+    document.getElementById('videoNavBar').checked = items.videoNavBar
     document.getElementById('pumk1').checked = items.pumk1
     document.getElementById('pumk2').checked = items.pumk2
     document.getElementById('pumk3').checked = items.pumk3
     document.getElementById('pumk3').checked = items.pumk3
     document.getElementById('suggestedForYou').checked = items.suggestedForYou
     document.getElementById('stories').checked = items.stories
-    document.getElementById('follow').checked = items.follow
+    document.getElementById('followHomePage').checked = items.followHomePage
     document.getElementById('videoPlaylist').checked = items.videoPlaylist
     document.getElementById('isIn').checked = items.isIn
     document.getElementById('isAt').checked = items.isAt
@@ -144,7 +144,7 @@ function restore_options() {
     document.getElementById('sponsoredAd').checked = items.sponsoredAd
     document.getElementById('album').checked = items.album
     document.getElementById('addedANewPhotoToTheAlbum').checked = items.addedANewPhotoToTheAlbum                
-    document.getElementById('reelsAndShortVideos').checked = items.reelsAndShortVideos    
+    document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage    
     document.getElementById('groups').checked = items.groups
     document.getElementById('autoClickSeeMore').checked = items.autoClickSeeMore
     document.getElementById('removeSeeLess').checked = items.removeSeeLess
