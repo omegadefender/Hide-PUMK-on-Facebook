@@ -9,12 +9,12 @@ chrome.storage.sync.get(function(options) {
         nav_bar_options.push(this[key])
       } else if (key.includes("HomePage")) {
         home_page_options.push(this[key])
+        console.log(this[key], key)
       }
     }     
   })    
 })
 
-console.log(nav_bar_options)
 console.log(home_page_options)
 
 //observer settings and operations
@@ -39,38 +39,7 @@ let observer = new MutationObserver(function(mutations, observer) {
         home_page_options.forEach(function (filter) {
           filter()
         })
-        checkOption('pumk1', pumk)        
-        checkOption('suggestedForYou', suggestedForYou)
-        checkOption('stories', stories)
-        checkOption('autoClickSeeMore', auto_click_see_more) 
-        checkOption('removeSeeLess', remove_see_less)
-        checkOption('videoSidebar', videoSidebar)
-        checkOption('yourProfileSidebar', your_profile_sidebar)
-        checkOption('findFriendsSidebar', find_friends_sidebar)
-        checkOption('groups', groups) 
-        checkOption('memoriesSidebar', memories_sidebar)
-        checkOption('gamingVideo', gaming_video)
-        checkOption('savedSidebar', saved_sidebar)
-        checkOption('eventsSidebar', events_sidebar)
-        checkOption('adsManagerSidebar', ads_manager_sidebar)
-        checkOption('bloodDonationsSidebar', blood_donations_sidebar)
-        checkOption('climateScienceCentre', climate_science_centre)
-        checkOption('fundraisersSidebar', fundraisers_sidebar)
-        checkOption('marketplaceSidebar', marketplace_sidebar)
-        checkOption('messengerSidebar', messenger_sidebar)
-        checkOption('messengerKidsSidebar', messenger_kids_sidebar)
-        checkOption('metaQuestSidebar', meta_quest_sidebar)
-        checkOption('ordersPaymentsSidebar', orders_payments_sidebar)
-        checkOption('pagesSidebar', pages_sidebar)
-        checkOption('playGamesSidebar', play_games_sidebar)
-        checkOption('recentAdActivitySidebar', recent_ad_activity_sidebar)
-        checkOption('videoPlaylist', videoPlaylist)
-        checkOption('isIn', isIn)
-        checkOption('isAt', isAt)
-        checkOption('and', and)
-        checkOption('sponsoredAd', sponsoredAd)
-        checkOption('album', album)
-        checkOption('addedANewPhotoToTheAlbum', addedANewPhotoToTheAlbum)        
+        checkOption('pumk1', pumk)  
       }
       else if (url == 'friends') {
         checkOption('pumk3', pumk)
@@ -121,7 +90,7 @@ function videoNavBar() {
 }
 
 //Home Page Options
-function suggestedForYou() {
+function suggestedForYouHomePage() {
   const xpath = "//span[text() = 'Suggested for you']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -137,7 +106,7 @@ function reelsAndShortVideosHomePage() {
   }
 }
 
-function stories() {
+function storiesHomePage() {
   const div = document.querySelector('[data-pagelet="Stories"]')
   if (div != null) {
     div.remove()
@@ -152,7 +121,7 @@ function followHomePage() {
   }
 }
 
-function videoPlaylist() {
+function videoPlaylistHomePage() {
   const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -160,7 +129,7 @@ function videoPlaylist() {
   }
 }
 
-function isIn() {
+function isInHomePage() {
   const xpath = "//span[text() = ' is in ']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -168,7 +137,7 @@ function isIn() {
   }
 }
 
-function isAt() {
+function isAtHomePage() {
   const xpath = "//span[text() = ' is at ']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -176,7 +145,7 @@ function isAt() {
   }
 }
 
-function and() {
+function andHomePage() {
   const xpath = "//span[text() = ' and ']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -184,7 +153,7 @@ function and() {
   }
 }
 
-function sponsoredAd() {
+function sponsoredAdHomePage() {
   const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::*[4]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -192,7 +161,7 @@ function sponsoredAd() {
   }
 }
 
-function album() {
+function albumHomePage() {
   const xpath = "//span[text() = 'Album ']/ancestor::*[22]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -200,7 +169,7 @@ function album() {
   }
 }
 
-function addedANewPhotoToTheAlbum() {
+function addedANewPhotoToTheAlbumHomePage() {
   const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::*[24]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -209,7 +178,7 @@ function addedANewPhotoToTheAlbum() {
 } 
 
 //Side bar options
-function groups() {
+function groupsHomePage() {
   const divXPath = "//span[text() = 'Groups']/ancestor::li"
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -217,7 +186,7 @@ function groups() {
   } 
 }
 
-function auto_click_see_more() {
+function autoClickSeeMoreHomePage() {
   const divXPath = "//span[text() = 'See more']/ancestor::div[6]"
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -225,7 +194,7 @@ function auto_click_see_more() {
   }
 }
 
-function remove_see_less() {
+function removeSeeLessHomePage() {
   const divXPath = "//span[text() = 'See less']/ancestor::*[9]"
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -233,7 +202,7 @@ function remove_see_less() {
   }
 }
 
-function videoSidebar() {
+function videoHomePage() {
   const xPath = "//span[text() = 'Video']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -241,7 +210,7 @@ function videoSidebar() {
   } 
 }
 
-function find_friends_sidebar() {
+function findFriendsHomePage() {
   const xPath = "//span[text() = 'Find friends']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -249,7 +218,7 @@ function find_friends_sidebar() {
   } 
 }
 
-function memories_sidebar() {
+function memoriesHomePage() {
   const xPath = "//span[text() = 'Memories']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -257,7 +226,7 @@ function memories_sidebar() {
   } 
 }
 
-function gaming_video() {
+function gamingVideoHomePage() {
   const xPath = "//span[text() = 'Gaming video']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -265,7 +234,7 @@ function gaming_video() {
   } 
 }
 
-function saved_sidebar() {
+function savedHomePage() {
   const xPath = "//span[text() = 'Saved']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -273,7 +242,7 @@ function saved_sidebar() {
   } 
 }
 
-function events_sidebar() {
+function eventsHomePage() {
   const xPath = "//span[text() = 'Events']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -281,7 +250,7 @@ function events_sidebar() {
   } 
 }
 
-function ads_manager_sidebar() {
+function adsManagerHomePage() {
   const xPath = "//span[text() = 'Ads Manager']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -289,7 +258,7 @@ function ads_manager_sidebar() {
   } 
 }
 
-function blood_donations_sidebar() {
+function bloodDonationsHomePage() {
   const xPath = "//span[text() = 'Blood Donations']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -297,7 +266,7 @@ function blood_donations_sidebar() {
   } 
 }
 
-function climate_science_centre() {
+function climateScienceCentreHomePage() {
   const xPath = "//span[text() = 'Climate Science Centre']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -305,7 +274,7 @@ function climate_science_centre() {
   } 
 }
 
-function fundraisers_sidebar() {
+function fundraisersHomePage() {
   const xPath = "//span[text() = 'Fundraisers']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -313,7 +282,7 @@ function fundraisers_sidebar() {
   } 
 }
 
-function marketplace_sidebar() {
+function marketplaceHomePage() {
   const xPath = "//span[text() = 'Marketplace']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -321,7 +290,7 @@ function marketplace_sidebar() {
   } 
 }
 
-function messenger_sidebar() {
+function messengerHomePage() {
   const xPath = "//span[text() = 'Messenger']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -329,7 +298,7 @@ function messenger_sidebar() {
   } 
 }
 
-function messenger_kids_sidebar() {
+function messengerKidsHomePage() {
   const xPath = "//span[text() = 'Messenger Kids']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -337,7 +306,7 @@ function messenger_kids_sidebar() {
   } 
 }
 
-function meta_quest_sidebar() {
+function metaQuestHomePage() {
   const xPath = "//span[text() = 'Meta Quest']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -345,7 +314,7 @@ function meta_quest_sidebar() {
   } 
 }
 
-function orders_payments_sidebar() {
+function ordersPaymentsHomePage() {
   const xPath = "//span[text() = 'Orders and payments']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -353,7 +322,7 @@ function orders_payments_sidebar() {
   } 
 }
 
-function pages_sidebar() {
+function pagesHomePage() {
   const xPath = "//span[text() = 'Pages']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -361,7 +330,7 @@ function pages_sidebar() {
   } 
 }
 
-function play_games_sidebar() {
+function playGamesHomePage() {
   const xPath = "//span[text() = 'Play games']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -369,7 +338,7 @@ function play_games_sidebar() {
   } 
 }
 
-function recent_ad_activity_sidebar() {
+function recentAdActivityHomePage() {
   const xPath = "//span[text() = 'Recent ad activity']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
@@ -377,7 +346,7 @@ function recent_ad_activity_sidebar() {
   } 
 }
 
-function your_profile_sidebar() {
+function yourProfileHomePage() {
   const xPath = "//div[@class='x1iyjqo2']/ul[1]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {

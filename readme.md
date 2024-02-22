@@ -14,5 +14,5 @@ Please log feature requests, or bug reports on the [Github Repo](https://github.
 
 - Removed defunct options that are no longer relevant due to changes by Facebook.
 - Fixed "suggested for you" and "stories" options, as these were affected by recent changes made by Facebook
-- Added option to remove "Video" from the left sidebar on the home page
+- Added option to remove "Video" from the left HomePage on the home page
 - Performance improvement.
