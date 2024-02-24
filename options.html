@@ -13,14 +13,14 @@
         <p>Submit a feature request or bug report on my <a href="https://github.com/omegadefender/Zucker/issues" target="_blank">Github Page</a></p4>
         <div id="status"></div>
         <button id="save">Save</button>
-        <h3>Top Banner options</h3>
+        <h3>Site-wide options</h3>
         <label>
-            <input type="checkbox" id="videoNavBar">Video
-        </label>   
+            <input type="checkbox" id="videoSiteWide">Hide "Video" from the Navbar
+        </label><br>
+        <input type="checkbox" id="pumkSiteWide">
+        <label for="pumkSiteWide">Hide "People you may know" everywhere</label>  
         <h3>Homepage - News Feed options</h3>
-        <div>
-            <input type="checkbox" id="pumk1">
-            <label for="pumk1">Hide "People you may know"</label><br>
+        <div>            
             <input type="checkbox" id="suggestedForYouHomePage">
             <label for="suggestedForYouHomePage">Hide "Suggested for You"</label><br>           
             <input type="checkbox" id="reelsAndShortVideosHomePage">
@@ -116,18 +116,10 @@
                 <label for="metaQuestHomePage">Hide "Meta Quest"</label>    
             </div>           
         </div>
-        <br><hr>  
-        <h3>Friends Page options</h3>
-        <label>
-            <input type="checkbox" id="pumk3">Hide "People you may know"
-        </label>
-        <h3>Profile Page options</h3>
-        <label>
-            <input type="checkbox" id="pumk2">Hide "People you may know"  
-        </label>
+        <br><hr>
         <h3>Groups</h3>
         <label>
-            <input type="checkbox" id="suggestedPostsGroupsFeed">Hide "Suggested post from a public group"
+            <input type="checkbox" id="suggestedPostsGroupsPage">Hide "Suggested post from a public group"
         </label>              
     </body>
     <script src="options.js"></script>

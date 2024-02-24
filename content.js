@@ -1,21 +1,21 @@
 //options sorting
-let nav_bar_options = []
+let site_wide_options = []
 let home_page_options = []
+let group_page_options = []
 
 chrome.storage.sync.get(function(options) {
   Object.keys(options).forEach(key => {
     if (options[key]) {
-      if (key.includes("NavBar")) {
-        nav_bar_options.push(this[key])
+      if (key.includes("SiteWide")) {
+        site_wide_options.push(this[key])
       } else if (key.includes("HomePage")) {
         home_page_options.push(this[key])
-        console.log(this[key], key)
+      } else if (key.includes("GroupsPage")) {
+        group_page_options.push(this[key])
       }
     }     
   })    
 })
-
-console.log(home_page_options)
 
 //observer settings and operations
 function urlChopper(url) {
@@ -30,25 +30,19 @@ const config = { childList: true, subtree: true }
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     if (mutation.addedNodes.length > 0) {
-      nav_bar_options.forEach(function (filter) {
+      site_wide_options.forEach(function (filter) {
         filter()
       })
       const url = urlChopper(window.location.href)
-      const urlIdex = url.indexOf(".")
       if ((url == '' || url == '?sk=h_chr')) {
         home_page_options.forEach(function (filter) {
           filter()
-        })
-        checkOption('pumk1', pumk)  
-      }
-      else if (url == 'friends') {
-        checkOption('pumk3', pumk)
-      }
-      else if (urlIdex != -1) {
-        checkOption('pumk2', pumk)
+        }) 
       }
       else if (url == 'groups/feed/') {
-        checkOption('suggestedPostsGroupsFeed', suggested_posts_groups_feed)
+        group_page_options.forEach(function (filter) {
+          filter()
+        })
       }      
     }
   })
@@ -56,17 +50,8 @@ let observer = new MutationObserver(function(mutations, observer) {
 
 observer.observe(node, config);
 
-//Helper functions
-function checkOption(key, callback) {
-  chrome.storage.sync.get(key, function(options) {
-    if (options[key]) {
-      callback()
-    }    
-  })
-}
-
-//Hides 'People you may know' across the site
-function pumk() {  
+//Site Options
+function pumkSiteWide() {  
   let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
   let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   const url = urlChopper(window.location.href)
@@ -80,8 +65,8 @@ function pumk() {
   }
 }
 
-//Top Menu options
-function videoNavBar() {
+//SiteWide options
+function videoSiteWide() {
   const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
   const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (li != null) {
@@ -345,7 +330,6 @@ function recentAdActivityHomePage() {
     div.remove()
   } 
 }
-
 function yourProfileHomePage() {
   const xPath = "//div[@class='x1iyjqo2']/ul[1]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -355,7 +339,7 @@ function yourProfileHomePage() {
 }
 
 //hides suggested posts from public groups from the groups page feed
-function suggested_posts_groups_feed() {
+function suggestedPostsGroupsPage() {
   const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[8]"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {

@@ -1,10 +1,8 @@
 const saveButton = document.getElementById('save')
 
 function save_options() {
-  const videoNavBar = document.getElementById('videoNavBar').checked
-  const pumkNews = document.getElementById('pumk1').checked
-  const pumkProfile = document.getElementById('pumk2').checked
-  const pumkFriends = document.getElementById('pumk3').checked
+  const videoSiteWide = document.getElementById('videoSiteWide').checked
+  const pumkSiteWide = document.getElementById('pumkSiteWide').checked
   const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked
   const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked
   const storiesHomePage = document.getElementById('storiesHomePage').checked
@@ -38,13 +36,11 @@ function save_options() {
   const playGamesHomePage = document.getElementById('playGamesHomePage').checked
   const recentAdActivityHomePage = document.getElementById('recentAdActivityHomePage').checked
   const yourProfileHomePage = document.getElementById('yourProfileHomePage').checked
-  const suggestedPostsGroupsFeed = document.getElementById('suggestedPostsGroupsFeed').checked
+  const suggestedPostsGroupsPage = document.getElementById('suggestedPostsGroupsPage').checked
 
   chrome.storage.sync.set({
-    videoNavBar: videoNavBar,
-    pumk1: pumkNews,
-    pumk2: pumkProfile,
-    pumk3: pumkFriends,
+    videoSiteWide: videoSiteWide,
+    pumkSiteWide: pumkSiteWide,
     suggestedForYouHomePage: suggestedForYouHomePage,
     reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
     storiesHomePage: storiesHomePage,
@@ -78,7 +74,7 @@ function save_options() {
     playGamesHomePage: playGamesHomePage,
     recentAdActivityHomePage: recentAdActivityHomePage,
     yourProfileHomePage: yourProfileHomePage,
-    suggestedPostsGroupsFeed: suggestedPostsGroupsFeed
+    suggestedPostsGroupsPage: suggestedPostsGroupsPage
   }, function() {
     const status = document.getElementById('status')
     status.textContent = 'Options saved. You may need to reload to see effects'
@@ -90,10 +86,8 @@ function save_options() {
   
 function restore_options() {
   chrome.storage.sync.get({
-    videoNavBar: true,
-    pumk1: true,
-    pumk2: true,
-    pumk3: false,
+    videoSiteWide: true,
+    pumkSiteWide: true,
     suggestedForYouHomePage: true,
     reelsAndShortVideosHomePage: true,
     storiesHomePage: true,
@@ -127,13 +121,10 @@ function restore_options() {
     playGamesHomePage: false,
     recentAdActivityHomePage: false,
     yourProfileHomePage: true,
-    suggestedPostsGroupsFeed: false
+    suggestedPostsGroupsPage: false
 }, function(items) {  
-    document.getElementById('videoNavBar').checked = items.videoNavBar
-    document.getElementById('pumk1').checked = items.pumk1
-    document.getElementById('pumk2').checked = items.pumk2
-    document.getElementById('pumk3').checked = items.pumk3
-    document.getElementById('pumk3').checked = items.pumk3
+    document.getElementById('videoSiteWide').checked = items.videoSiteWide
+    document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
     document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
     document.getElementById('followHomePage').checked = items.followHomePage
@@ -167,7 +158,7 @@ function restore_options() {
     document.getElementById('playGamesHomePage').checked = items.playGamesHomePage
     document.getElementById('recentAdActivityHomePage').checked = items.recentAdActivityHomePage
     document.getElementById('yourProfileHomePage').checked = items.yourProfileHomePage
-    document.getElementById('suggestedPostsGroupsFeed').checked = items.suggestedPostsGroupsFeed
+    document.getElementById('suggestedPostsGroupsPage').checked = items.suggestedPostsGroupsPage
   });
 }
   
