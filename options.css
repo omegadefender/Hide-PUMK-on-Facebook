@@ -9,3 +9,7 @@ h3 {
 .left {
     width: fit-content;
 }
+
+#status {
+    background-color: #7FFF00;
+}

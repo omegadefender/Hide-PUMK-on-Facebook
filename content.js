@@ -50,50 +50,63 @@ let observer = new MutationObserver(function(mutations, observer) {
 
 observer.observe(node, config);
 
+//Debug Functions
+function getFuncName() {
+  return getFuncName.caller.name
+}
+
 //SiteWide options
 function pumkSiteWide() {
   const url = urlChopper(window.location.href)  
   let xpath = "//span[text() = 'People you may know']"
-  let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (url == '' && div != null) {
-    xpath = "//span[text() = 'People you may know']/ancestor::*[21]"
-    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    div.remove()
+  let html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null && url == '') {
+    xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    html.remove()
   }
-  else if (url == 'friends' && div != null) {
+  else if (html != null && url == 'friends') {
     xpath = "//span[text() = 'People you may know']/ancestor::*[13]"
-    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    div.remove()
+    html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    html.remove()
   }
-  else if (div != null && url != 'friends' && url != '') {
+  else if (html != null && url != 'friends' && url != '') {
     xpath = "//span[text() = 'People you may know']/ancestor::*[8]"
-    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    div.remove()
+    html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    html.remove()
   }
 }
 
 function videoSiteWide() {
   const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
-  const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (li != null) {
-    li.remove()
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   } 
 }
 
-//Home Page Options
+//Home Page News Feed Options
+function sponsoredAdHomePage() {
+  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+}
+
 function suggestedForYouHomePage() {
-  const xpath = "//span[text() = 'Suggested for you']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function reelsAndShortVideosHomePage() {
-  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[22]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = 'Reels and short videos']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
@@ -106,84 +119,85 @@ function storiesHomePage() {
 }
 
 function followHomePage() {
-  const xpath = "//span[text() = 'Follow']/ancestor::*[26]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = 'Follow']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+}
+
+function paidPartnershipHomePage() {
+  const xpath = "//span[text() = 'Paid partnership']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function videoPlaylistHomePage() {
-  const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function isInHomePage() {
-  const xpath = "//span[text() = ' is in ']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = ' is in ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function isAtHomePage() {
-  const xpath = "//span[text() = ' is at ']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = ' is at ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function andHomePage() {
-  const xpath = "//span[text() = ' and ']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-  }
-}
-
-function sponsoredAdHomePage() {
-  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = ' and ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function albumHomePage() {
-  const xpath = "//span[text() = 'Album ']/ancestor::*[22]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = 'Album ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }
 
 function addedANewPhotoToTheAlbumHomePage() {
-  const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::*[24]"
-  const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 } 
 
 //Side bar options
+function autoClickSeeMoreHomePage() {
+  const xPath = "//span[text() = 'See more']/ancestor::div[6]"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.click()
+  }
+}
+
 function groupsHomePage() {
   const divXPath = "//span[text() = 'Groups']/ancestor::li"
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
-}
-
-function autoClickSeeMoreHomePage() {
-  const divXPath = "//span[text() = 'See more']/ancestor::div[6]"
-  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.click()
-  }
 }
 
 function removeSeeLessHomePage() {
@@ -191,6 +205,7 @@ function removeSeeLessHomePage() {
   const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   }
 }
 
@@ -199,6 +214,7 @@ function videoHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -207,6 +223,7 @@ function findFriendsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -215,6 +232,7 @@ function memoriesHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -223,6 +241,7 @@ function gamingVideoHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -231,6 +250,7 @@ function savedHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -239,6 +259,7 @@ function eventsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -247,6 +268,7 @@ function adsManagerHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -255,6 +277,7 @@ function bloodDonationsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -263,6 +286,7 @@ function climateScienceCentreHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -271,6 +295,7 @@ function fundraisersHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -279,6 +304,7 @@ function marketplaceHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -287,6 +313,7 @@ function messengerHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -295,6 +322,7 @@ function messengerKidsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -303,6 +331,7 @@ function metaQuestHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -311,6 +340,7 @@ function ordersPaymentsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -319,6 +349,7 @@ function pagesHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -327,6 +358,7 @@ function playGamesHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
@@ -335,6 +367,7 @@ function recentAdActivityHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 function yourProfileHomePage() {
@@ -342,14 +375,31 @@ function yourProfileHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
+    console.log(getFuncName())
   } 
 }
 
-//hides suggested posts from public groups from the groups page feed
+//Groups Feed options
 function suggestedPostsGroupsPage() {
-  const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[8]"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+}
+
+function suggestedForYouGroupsPage() {
+  const xPath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+}
+
+function friendsGroupsGroupsPage() {
+  const xPath = "//span[text() = \"Friends' groups\"]/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   }
 }

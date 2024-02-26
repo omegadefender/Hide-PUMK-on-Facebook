@@ -3,15 +3,16 @@ const saveButton = document.getElementById('save')
 function save_options() {
   const videoSiteWide = document.getElementById('videoSiteWide').checked
   const pumkSiteWide = document.getElementById('pumkSiteWide').checked
+  const sponsoredAdHomePage = document.getElementById('sponsoredAdHomePage').checked
   const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked
   const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked
   const storiesHomePage = document.getElementById('storiesHomePage').checked
   const followHomePage = document.getElementById('followHomePage').checked
+  const paidPartnershipHomePage = document.getElementById('paidPartnershipHomePage').checked
   const videoPlaylistHomePage = document.getElementById('videoPlaylistHomePage').checked
   const isInHomePage = document.getElementById('isInHomePage').checked
   const isAtHomePage = document.getElementById('isAtHomePage').checked
-  const andHomePage = document.getElementById('andHomePage').checked
-  const sponsoredAdHomePage = document.getElementById('sponsoredAdHomePage').checked
+  const andHomePage = document.getElementById('andHomePage').checked  
   const albumHomePage = document.getElementById('albumHomePage').checked
   const addedANewPhotoToTheAlbumHomePage = document.getElementById('addedANewPhotoToTheAlbumHomePage').checked 
   const groupsHomePage = document.getElementById('groupsHomePage').checked
@@ -37,19 +38,22 @@ function save_options() {
   const recentAdActivityHomePage = document.getElementById('recentAdActivityHomePage').checked
   const yourProfileHomePage = document.getElementById('yourProfileHomePage').checked
   const suggestedPostsGroupsPage = document.getElementById('suggestedPostsGroupsPage').checked
+  const suggestedForYouGroupsPage = document.getElementById('suggestedForYouGroupsPage').checked
+  const friendsGroupsGroupsPage = document.getElementById('friendsGroupsGroupsPage').checked
 
   chrome.storage.sync.set({
     videoSiteWide: videoSiteWide,
     pumkSiteWide: pumkSiteWide,
+    sponsoredAdHomePage: sponsoredAdHomePage,
     suggestedForYouHomePage: suggestedForYouHomePage,
     reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
     storiesHomePage: storiesHomePage,
     followHomePage: followHomePage,
+    paidPartnershipHomePage: paidPartnershipHomePage,
     videoPlaylistHomePage: videoPlaylistHomePage,
     isInHomePage: isInHomePage,
     isAtHomePage: isAtHomePage,
     andHomePage: andHomePage,
-    sponsoredAdHomePage: sponsoredAdHomePage,
     albumHomePage: albumHomePage,
     addedANewPhotoToTheAlbumHomePage: addedANewPhotoToTheAlbumHomePage,
     groupsHomePage: groupsHomePage,
@@ -74,13 +78,15 @@ function save_options() {
     playGamesHomePage: playGamesHomePage,
     recentAdActivityHomePage: recentAdActivityHomePage,
     yourProfileHomePage: yourProfileHomePage,
-    suggestedPostsGroupsPage: suggestedPostsGroupsPage
+    suggestedPostsGroupsPage: suggestedPostsGroupsPage,
+    suggestedForYouGroupsPage: suggestedForYouGroupsPage,
+    friendsGroupsGroupsPage: friendsGroupsGroupsPage
   }, function() {
     const status = document.getElementById('status')
-    status.textContent = 'Options saved. You will need to reload the browser tab running Facenbook to see effects'
+    status.style.visibility = 'visible'
     setTimeout(function() {
-      status.textContent = ''
-    }, 5000);
+      status.style.visibility = 'hidden'
+    }, 10000);
   });
 }
   
@@ -88,15 +94,16 @@ function restore_options() {
   chrome.storage.sync.get({
     videoSiteWide: true,
     pumkSiteWide: true,
+    sponsoredAdHomePage: true,
     suggestedForYouHomePage: true,
     reelsAndShortVideosHomePage: true,
     storiesHomePage: true,
     followHomePage: true,
+    paidPartnershipHomePage: true,
     videoPlaylistHomePage: true,
     isInHomePage: true,
     isAtHomePage: true,
     andHomePage: true,
-    sponsoredAdHomePage: true,
     albumHomePage: true,
     addedANewPhotoToTheAlbumHomePage: true,
     groupsHomePage: false,
@@ -121,18 +128,21 @@ function restore_options() {
     playGamesHomePage: false,
     recentAdActivityHomePage: false,
     yourProfileHomePage: true,
-    suggestedPostsGroupsPage: false
+    suggestedPostsGroupsPage: false,
+    suggestedForYouGroupsPage: false,
+    friendsGroupsGroupsPage: false
 }, function(items) {  
     document.getElementById('videoSiteWide').checked = items.videoSiteWide
     document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
+    document.getElementById('sponsoredAdHomePage').checked = items.sponsoredAdHomePage
     document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
     document.getElementById('followHomePage').checked = items.followHomePage
+    document.getElementById('paidPartnershipHomePage').checked = items.paidPartnershipHomePage    
     document.getElementById('videoPlaylistHomePage').checked = items.videoPlaylistHomePage
     document.getElementById('isInHomePage').checked = items.isInHomePage
     document.getElementById('isAtHomePage').checked = items.isAtHomePage
     document.getElementById('andHomePage').checked = items.andHomePage
-    document.getElementById('sponsoredAdHomePage').checked = items.sponsoredAdHomePage
     document.getElementById('albumHomePage').checked = items.albumHomePage
     document.getElementById('addedANewPhotoToTheAlbumHomePage').checked = items.addedANewPhotoToTheAlbumHomePage                
     document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage    
@@ -159,6 +169,8 @@ function restore_options() {
     document.getElementById('recentAdActivityHomePage').checked = items.recentAdActivityHomePage
     document.getElementById('yourProfileHomePage').checked = items.yourProfileHomePage
     document.getElementById('suggestedPostsGroupsPage').checked = items.suggestedPostsGroupsPage
+    document.getElementById('suggestedForYouGroupsPage').checked = items.suggestedForYouGroupsPage
+    document.getElementById('friendsGroupsGroupsPage').checked = items.friendsGroupsGroupsPage        
   });
 }
   
