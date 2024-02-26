@@ -50,22 +50,28 @@ let observer = new MutationObserver(function(mutations, observer) {
 
 observer.observe(node, config);
 
-//Site Options
-function pumkSiteWide() {  
-  let xpath = "//span[text() = 'People you may know']/ancestor::*[11]"
+//SiteWide options
+function pumkSiteWide() {
+  const url = urlChopper(window.location.href)  
+  let xpath = "//span[text() = 'People you may know']"
   let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  const url = urlChopper(window.location.href)
-  if (url != 'friends' && div != null) {
+  if (url == '' && div != null) {
+    xpath = "//span[text() = 'People you may know']/ancestor::*[21]"
+    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     div.remove()
   }
   else if (url == 'friends' && div != null) {
-    let xpath = "//span[text() = 'People you may know']/ancestor::*[12]"
-    let div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    xpath = "//span[text() = 'People you may know']/ancestor::*[13]"
+    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    div.remove()
+  }
+  else if (div != null && url != 'friends' && url != '') {
+    xpath = "//span[text() = 'People you may know']/ancestor::*[8]"
+    div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     div.remove()
   }
 }
 
-//SiteWide options
 function videoSiteWide() {
   const xPath = "//a[contains(@aria-label, 'Video')]/ancestor::li"
   const li = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -84,7 +90,7 @@ function suggestedForYouHomePage() {
 }
 
 function reelsAndShortVideosHomePage() {
-  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[17]"
+  const xpath = "//span[text() = 'Reels and short videos']/ancestor::*[22]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
@@ -92,9 +98,10 @@ function reelsAndShortVideosHomePage() {
 }
 
 function storiesHomePage() {
-  const div = document.querySelector('[data-pagelet="Stories"]')
-  if (div != null) {
-    div.remove()
+  const query = document.querySelector('[data-pagelet="Stories"]')  
+  if (query != null) {
+    const html = query.closest("div")
+    html.remove()
   }
 }
 
@@ -139,7 +146,7 @@ function andHomePage() {
 }
 
 function sponsoredAdHomePage() {
-  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::*[4]"
+  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
   const div = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()

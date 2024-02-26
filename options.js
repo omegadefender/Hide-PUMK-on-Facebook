@@ -77,10 +77,10 @@ function save_options() {
     suggestedPostsGroupsPage: suggestedPostsGroupsPage
   }, function() {
     const status = document.getElementById('status')
-    status.textContent = 'Options saved. You may need to reload to see effects'
+    status.textContent = 'Options saved. You will need to reload the browser tab running Facenbook to see effects'
     setTimeout(function() {
       status.textContent = ''
-    }, 6000);
+    }, 5000);
   });
 }
   
