@@ -50,11 +50,6 @@ let observer = new MutationObserver(function(mutations, observer) {
 
 observer.observe(node, config);
 
-//Debug Functions
-function getFuncName() {
-  return getFuncName.caller.name
-}
-
 //SiteWide options
 function pumkSiteWide() {
   const url = urlChopper(window.location.href)  
@@ -191,22 +186,30 @@ function autoClickSeeMoreHomePage() {
   }
 }
 
-function groupsHomePage() {
-  const divXPath = "//span[text() = 'Groups']/ancestor::li"
-  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-    console.log(getFuncName())
+function removeSeeLessHomePage() {
+  const xPath = "//span[text() = 'See less']/ancestor::div[contains(@data-visualcompletion, 'ignore-dynamic')][1]"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+}
+
+function findFriendsHomePage() {
+  const xPath = "//span[text() = 'Find friends']/ancestor::li"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
   } 
 }
 
-function removeSeeLessHomePage() {
-  const divXPath = "//span[text() = 'See less']/ancestor::*[9]"
-  const div = document.evaluate(divXPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-    console.log(getFuncName())
-  }
+//feeds should go here
+
+function groupsHomePage() {
+  const xPath = "//span[text() = 'Groups']/ancestor::li"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  } 
 }
 
 function videoHomePage() {
@@ -214,25 +217,15 @@ function videoHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
-function findFriendsHomePage() {
-  const xPath = "//span[text() = 'Find friends']/ancestor::li"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
-    console.log(getFuncName())
-  } 
-}
 
 function memoriesHomePage() {
   const xPath = "//span[text() = 'Memories']/ancestor::li"
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -241,7 +234,6 @@ function gamingVideoHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -250,7 +242,6 @@ function savedHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -259,7 +250,6 @@ function eventsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -268,7 +258,6 @@ function adsManagerHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -277,7 +266,6 @@ function bloodDonationsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -286,7 +274,6 @@ function climateScienceCentreHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -295,7 +282,6 @@ function fundraisersHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -304,7 +290,6 @@ function marketplaceHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -313,7 +298,6 @@ function messengerHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -322,7 +306,6 @@ function messengerKidsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -331,7 +314,6 @@ function metaQuestHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -340,7 +322,6 @@ function ordersPaymentsHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -349,7 +330,6 @@ function pagesHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -358,7 +338,6 @@ function playGamesHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 
@@ -367,7 +346,6 @@ function recentAdActivityHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 function yourProfileHomePage() {
@@ -375,7 +353,6 @@ function yourProfileHomePage() {
   const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (div != null) {
     div.remove()
-    console.log(getFuncName())
   } 
 }
 

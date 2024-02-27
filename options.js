@@ -14,10 +14,10 @@ function save_options() {
   const isAtHomePage = document.getElementById('isAtHomePage').checked
   const andHomePage = document.getElementById('andHomePage').checked  
   const albumHomePage = document.getElementById('albumHomePage').checked
-  const addedANewPhotoToTheAlbumHomePage = document.getElementById('addedANewPhotoToTheAlbumHomePage').checked 
-  const groupsHomePage = document.getElementById('groupsHomePage').checked
+  const addedANewPhotoToTheAlbumHomePage = document.getElementById('addedANewPhotoToTheAlbumHomePage').checked
   const autoClickSeeMoreHomePage = document.getElementById('autoClickSeeMoreHomePage').checked
   const removeSeeLessHomePage = document.getElementById('removeSeeLessHomePage').checked
+  const groupsHomePage = document.getElementById('groupsHomePage').checked
   const videoHomePage = document.getElementById('videoHomePage').checked  
   const findFriendsHomePage = document.getElementById('findFriendsHomePage').checked
   const memoriesHomePage = document.getElementById('memoriesHomePage').checked
@@ -56,9 +56,9 @@ function save_options() {
     andHomePage: andHomePage,
     albumHomePage: albumHomePage,
     addedANewPhotoToTheAlbumHomePage: addedANewPhotoToTheAlbumHomePage,
-    groupsHomePage: groupsHomePage,
     autoClickSeeMoreHomePage: autoClickSeeMoreHomePage,
     removeSeeLessHomePage: removeSeeLessHomePage,
+    groupsHomePage: groupsHomePage,
     videoHomePage: videoHomePage,
     findFriendsHomePage: findFriendsHomePage,
     memoriesHomePage: memoriesHomePage,
@@ -105,10 +105,10 @@ function restore_options() {
     isAtHomePage: true,
     andHomePage: true,
     albumHomePage: true,
-    addedANewPhotoToTheAlbumHomePage: true,
-    groupsHomePage: false,
+    addedANewPhotoToTheAlbumHomePage: true,    
     autoClickSeeMoreHomePage: false,
     removeSeeLessHomePage: false,
+    groupsHomePage: false,
     videoHomePage: false,
     findFriendsHomePage: false,
     memoriesHomePage: false,
@@ -146,9 +146,9 @@ function restore_options() {
     document.getElementById('albumHomePage').checked = items.albumHomePage
     document.getElementById('addedANewPhotoToTheAlbumHomePage').checked = items.addedANewPhotoToTheAlbumHomePage                
     document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage    
-    document.getElementById('groupsHomePage').checked = items.groupsHomePage
     document.getElementById('autoClickSeeMoreHomePage').checked = items.autoClickSeeMoreHomePage
     document.getElementById('removeSeeLessHomePage').checked = items.removeSeeLessHomePage
+    document.getElementById('groupsHomePage').checked = items.groupsHomePage
     document.getElementById('videoHomePage').checked = items.videoHomePage
     document.getElementById('findFriendsHomePage').checked = items.findFriendsHomePage
     document.getElementById('memoriesHomePage').checked = items.memoriesHomePage

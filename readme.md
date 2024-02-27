@@ -6,6 +6,14 @@ The only data that this extension uses are the options you select.
 
 Please log feature requests, or bug reports on the [Github Repo](https://github.com/omegadefender/Zucker/issues)
 
+### 0.0.1.9 Update
+
+- Fixed Bug where "Follow" would block "see more replys" and "View all replies"
+- Added new option to block "Paid partnerships"
+- Fixed "Suggested post from a public group" so that gaps don't appear between posts on the feed.
+- Added options to block "Suggested for you" and "Friends' groups" from the groups feed
+- Tweaked options page
+
 ### 0.0.1.8 Update
 
 - Refactored code to improve performance
