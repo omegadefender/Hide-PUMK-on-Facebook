@@ -9,11 +9,13 @@
     </head>
     <body>
         <h1>Options for Zucker</h1>
-        <h4>Version 0.0.1.9</h4>
+        <h3>Version 0.0.2.0</h3>
         <p>Submit a feature request or bug report on my <a href="https://github.com/omegadefender/Zucker/issues" target="_blank">Github Page</a></p4>
         <div id="status" style="visibility: hidden;">Options saved. You will need to reload the browser tab running Facebook to see effects</div><br>
         <button id="save">Save</button>
         <h3>Site-wide options</h3>
+        <input type="checkbox" id="sponsoredAdsSiteWide">
+        <label for="sponsoredAdsSiteWide">Block ALL Advertisements/Sponsored Posts</label><br>
         <label>
             <input type="checkbox" id="videoSiteWide">Hide "Video" from the Navbar
         </label><br>
@@ -21,9 +23,7 @@
         <label for="pumkSiteWide">Hide "People you may know" everywhere</label><br><br>
         <hr>  
         <h3>Homepage - News Feed options</h3>
-        <div>
-            <input type="checkbox" id="sponsoredAdHomePage">
-            <label>Hide "sponsoredAd"</label><br>            
+        <div>            
             <input type="checkbox" id="suggestedForYouHomePage">
             <label for="suggestedForYouHomePage">Hide "Suggested for You"</label><br>           
             <input type="checkbox" id="reelsAndShortVideosHomePage">

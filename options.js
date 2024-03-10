@@ -3,7 +3,7 @@ const saveButton = document.getElementById('save')
 function save_options() {
   const videoSiteWide = document.getElementById('videoSiteWide').checked
   const pumkSiteWide = document.getElementById('pumkSiteWide').checked
-  const sponsoredAdHomePage = document.getElementById('sponsoredAdHomePage').checked
+  const sponsoredAdsSiteWide = document.getElementById('sponsoredAdsSiteWide').checked
   const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked
   const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked
   const storiesHomePage = document.getElementById('storiesHomePage').checked
@@ -44,7 +44,7 @@ function save_options() {
   chrome.storage.sync.set({
     videoSiteWide: videoSiteWide,
     pumkSiteWide: pumkSiteWide,
-    sponsoredAdHomePage: sponsoredAdHomePage,
+    sponsoredAdsSiteWide: sponsoredAdsSiteWide,
     suggestedForYouHomePage: suggestedForYouHomePage,
     reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
     storiesHomePage: storiesHomePage,
@@ -94,7 +94,7 @@ function restore_options() {
   chrome.storage.sync.get({
     videoSiteWide: true,
     pumkSiteWide: true,
-    sponsoredAdHomePage: true,
+    sponsoredAdsSiteWide: true,
     suggestedForYouHomePage: true,
     reelsAndShortVideosHomePage: true,
     storiesHomePage: true,
@@ -134,7 +134,7 @@ function restore_options() {
 }, function(items) {  
     document.getElementById('videoSiteWide').checked = items.videoSiteWide
     document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
-    document.getElementById('sponsoredAdHomePage').checked = items.sponsoredAdHomePage
+    document.getElementById('sponsoredAdsSiteWide').checked = items.sponsoredAdsSiteWide
     document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
     document.getElementById('followHomePage').checked = items.followHomePage

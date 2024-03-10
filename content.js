@@ -17,6 +17,17 @@ chrome.storage.sync.get(function(options) {
   })    
 })
 
+function onRemoved() {
+  console.log("OK");
+}
+
+function onError(e) {
+  console.log(e);
+}
+let defunctOptions = ["sponsoredAdHomePage"]
+let removeDefunctOptions = chrome.storage.sync.remove(defunctOptions);
+removeDefunctOptions.then(onRemoved, onError);
+
 //observer settings and operations
 function urlChopper(url) {
   const str = "https://www.facebook.com/"
@@ -30,10 +41,14 @@ const config = { childList: true, subtree: true }
 let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     if (mutation.addedNodes.length > 0) {
-      site_wide_options.forEach(function (filter) {
-        filter()
-      })
       const url = urlChopper(window.location.href)
+      site_wide_options.forEach(function (filter) {
+        if (filter.length != 0){
+          filter(url)
+        } else {
+          filter()
+        }        
+      })      
       if ((url == '' || url == '?sk=h_chr')) {
         home_page_options.forEach(function (filter) {
           filter()
@@ -51,8 +66,28 @@ let observer = new MutationObserver(function(mutations, observer) {
 observer.observe(node, config);
 
 //SiteWide options
-function pumkSiteWide() {
-  const url = urlChopper(window.location.href)  
+function sponsoredAdsSiteWide(url) {
+  if (url == '') {
+    const xpath_feed = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    const xpath_right_rail = "//span[text() = 'Sponsored']/ancestor::div[contains(@data-pagelet, 'RightRail')]/*[1]"
+    const html_feed = document.evaluate(xpath_feed, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    const right_rail = document.evaluate(xpath_right_rail, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    if (html_feed != null) {
+      html_feed.remove()
+    }
+    if (right_rail) {
+      right_rail.remove()
+    }
+  } else if (url == '?filter=all&sk=h_chr'){
+    const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    if (html != null) {
+      html.remove()
+    }
+  } 
+}
+
+function pumkSiteWide(url) {  
   let xpath = "//span[text() = 'People you may know']"
   let html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null && url == '') {
@@ -81,14 +116,6 @@ function videoSiteWide() {
 }
 
 //Home Page News Feed Options
-function sponsoredAdHomePage() {
-  const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
-  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (html != null) {
-    html.remove()
-  }
-}
-
 function suggestedForYouHomePage() {
   const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
