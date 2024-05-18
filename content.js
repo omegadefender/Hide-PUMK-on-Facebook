@@ -18,12 +18,13 @@ chrome.storage.sync.get(function(options) {
 })
 
 function onRemoved() {
-  console.log("OK");
+  console.log("Defunct option removed");
 }
 
 function onError(e) {
   console.log(e);
 }
+
 let defunctOptions = ["sponsoredAdHomePage"]
 let removeDefunctOptions = chrome.storage.sync.remove(defunctOptions);
 removeDefunctOptions.then(onRemoved, onError);
@@ -71,20 +72,36 @@ function sponsoredAdsSiteWide(url) {
     const xpath_feed = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
     const xpath_right_rail = "//span[text() = 'Sponsored']/ancestor::div[contains(@data-pagelet, 'RightRail')]/*[1]"
     const html_feed = document.evaluate(xpath_feed, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    const right_rail = document.evaluate(xpath_right_rail, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+    const html_right_rail = document.evaluate(xpath_right_rail, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     if (html_feed != null) {
       html_feed.remove()
     }
-    if (right_rail) {
-      right_rail.remove()
+    if (html_right_rail) {
+      html_right_rail.remove()
     }
   } else if (url == '?filter=all&sk=h_chr'){
+    //Feeds
     const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
     const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     if (html != null) {
       html.remove()
     }
-  } 
+  } else if (url == 'marketplace/?ref=app_tab') {
+      //marketplace
+      let browse_feed_array = []
+      browse_feed_array = document.querySelectorAll('div[data-pagelet*="BrowseFeedUpsell_"]')
+      browse_feed_array.forEach((upsell_feed => {
+        const xpath_text = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[1]"
+        const xpath_image = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[contains(@data-pagelet, 'BrowseFeedUpsell_')]/descendant::div[18]"
+        const html_text = document.evaluate(xpath_text, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+        const html_image = document.evaluate(xpath_image, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+        if (html_text != null) {
+          html_text.remove()
+          html_image.remove()
+          console.log("Ad Removed")
+        }
+      }))    
+    }
 }
 
 function pumkSiteWide(url) {  
