@@ -1,12 +1,14 @@
 const saveButton = document.getElementById('save')
 
 function save_options() {
-  const videoSiteWide = document.getElementById('videoSiteWide').checked
-  const pumkSiteWide = document.getElementById('pumkSiteWide').checked
+  //Site options
   const sponsoredAdsSiteWide = document.getElementById('sponsoredAdsSiteWide').checked
-  const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked
-  const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked
+  const pumkSiteWide = document.getElementById('pumkSiteWide').checked
+  const videoSiteWide = document.getElementById('videoSiteWide').checked
+  //Hompage - news feed options
   const storiesHomePage = document.getElementById('storiesHomePage').checked
+  const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked    
+  const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked    
   const followHomePage = document.getElementById('followHomePage').checked
   const paidPartnershipHomePage = document.getElementById('paidPartnershipHomePage').checked
   const videoPlaylistHomePage = document.getElementById('videoPlaylistHomePage').checked
@@ -42,12 +44,14 @@ function save_options() {
   const friendsGroupsGroupsPage = document.getElementById('friendsGroupsGroupsPage').checked
 
   chrome.storage.sync.set({
-    videoSiteWide: videoSiteWide,
-    pumkSiteWide: pumkSiteWide,
+    //Site options
     sponsoredAdsSiteWide: sponsoredAdsSiteWide,
-    suggestedForYouHomePage: suggestedForYouHomePage,
-    reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
+    pumkSiteWide: pumkSiteWide,
+    videoSiteWide: videoSiteWide,
+    //Hompage - news feed options
     storiesHomePage: storiesHomePage,
+    reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
+    suggestedForYouHomePage: suggestedForYouHomePage,        
     followHomePage: followHomePage,
     paidPartnershipHomePage: paidPartnershipHomePage,
     videoPlaylistHomePage: videoPlaylistHomePage,
@@ -92,12 +96,14 @@ function save_options() {
   
 function restore_options() {
   chrome.storage.sync.get({
-    videoSiteWide: true,
-    pumkSiteWide: true,
+    //Site options
     sponsoredAdsSiteWide: true,
-    suggestedForYouHomePage: true,
-    reelsAndShortVideosHomePage: true,
+    pumkSiteWide: true,
+    videoSiteWide: true,
+    //Hompage - news feed options
     storiesHomePage: true,
+    reelsAndShortVideosHomePage: true,      
+    suggestedForYouHomePage: true,        
     followHomePage: true,
     paidPartnershipHomePage: true,
     videoPlaylistHomePage: true,
@@ -131,12 +137,15 @@ function restore_options() {
     suggestedPostsGroupsPage: false,
     suggestedForYouGroupsPage: false,
     friendsGroupsGroupsPage: false
-}, function(items) {  
-    document.getElementById('videoSiteWide').checked = items.videoSiteWide
-    document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
+}, function(items) {
+    //Site options  
     document.getElementById('sponsoredAdsSiteWide').checked = items.sponsoredAdsSiteWide
-    document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage
+    document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
+    document.getElementById('videoSiteWide').checked = items.videoSiteWide
+    //Hompage - news feed options
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
+    document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage        
+    document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage    
     document.getElementById('followHomePage').checked = items.followHomePage
     document.getElementById('paidPartnershipHomePage').checked = items.paidPartnershipHomePage    
     document.getElementById('videoPlaylistHomePage').checked = items.videoPlaylistHomePage
@@ -144,8 +153,7 @@ function restore_options() {
     document.getElementById('isAtHomePage').checked = items.isAtHomePage
     document.getElementById('andHomePage').checked = items.andHomePage
     document.getElementById('albumHomePage').checked = items.albumHomePage
-    document.getElementById('addedANewPhotoToTheAlbumHomePage').checked = items.addedANewPhotoToTheAlbumHomePage                
-    document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage    
+    document.getElementById('addedANewPhotoToTheAlbumHomePage').checked = items.addedANewPhotoToTheAlbumHomePage        
     document.getElementById('autoClickSeeMoreHomePage').checked = items.autoClickSeeMoreHomePage
     document.getElementById('removeSeeLessHomePage').checked = items.removeSeeLessHomePage
     document.getElementById('groupsHomePage').checked = items.groupsHomePage

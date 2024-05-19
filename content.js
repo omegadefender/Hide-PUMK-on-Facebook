@@ -44,7 +44,7 @@ let observer = new MutationObserver(function(mutations, observer) {
     if (mutation.addedNodes.length > 0) {
       const url = urlChopper(window.location.href)
       site_wide_options.forEach(function (filter) {
-        if (filter.length != 0){
+        if (filter.length == 1){
           filter(url)
         } else {
           filter()
@@ -76,7 +76,7 @@ function sponsoredAdsSiteWide(url) {
     if (html_feed != null) {
       html_feed.remove()
     }
-    if (html_right_rail) {
+    if (html_right_rail != null) {
       html_right_rail.remove()
     }
   } else if (url == '?filter=all&sk=h_chr'){
@@ -86,7 +86,7 @@ function sponsoredAdsSiteWide(url) {
     if (html != null) {
       html.remove()
     }
-  } else if (url == 'marketplace/?ref=app_tab') {
+  } else if (url.includes('marketplace')) {
       //marketplace
       let browse_feed_array = []
       browse_feed_array = document.querySelectorAll('div[data-pagelet*="BrowseFeedUpsell_"]')
@@ -98,30 +98,27 @@ function sponsoredAdsSiteWide(url) {
         if (html_text != null) {
           html_text.remove()
           html_image.remove()
-          console.log("Ad Removed")
         }
       }))    
     }
 }
 
 function pumkSiteWide(url) {  
-  let xpath = "//span[text() = 'People you may know']"
-  let html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (html != null && url == '') {
+  let xpath = ""
+  let html = null
+  if (url == '') {
     xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue 
+  } else if (url == 'friends') {
+    xpath = "//span[text() = 'People you may know']/ancestor::div[9]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    html.remove()
-  }
-  else if (html != null && url == 'friends') {
-    xpath = "//span[text() = 'People you may know']/ancestor::*[13]"
+  } else {
+    xpath = "//span[text() = 'People you may know']/ancestor::div[7]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-    html.remove()
   }
-  else if (html != null && url != 'friends' && url != '') {
-    xpath = "//span[text() = 'People you may know']/ancestor::*[8]"
-    html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
     html.remove()
-  }
+  }    
 }
 
 function videoSiteWide() {
@@ -133,9 +130,8 @@ function videoSiteWide() {
 }
 
 //Home Page News Feed Options
-function suggestedForYouHomePage() {
-  const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
-  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+function storiesHomePage() {
+  const html = document.querySelector('[data-pagelet="Stories"]')
   if (html != null) {
     html.remove()
   }
@@ -149,10 +145,10 @@ function reelsAndShortVideosHomePage() {
   }
 }
 
-function storiesHomePage() {
-  const query = document.querySelector('[data-pagelet="Stories"]')  
-  if (query != null) {
-    const html = query.closest("div")
+function suggestedForYouHomePage() {
+  const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
     html.remove()
   }
 }

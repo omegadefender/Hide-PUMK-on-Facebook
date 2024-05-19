@@ -6,6 +6,13 @@ The only data that this extension uses are the options you select.
 
 Please log feature requests, or bug reports on the [Github Repo](https://github.com/omegadefender/Zucker/issues)
 
+### 0.0.2.0 Update
+
+- condensed block ads options into one global option
+- condensed 'People you may know' into one global option
+- Fixed bug on friends page, where "People you may know" option would also hide friend requests
+- code refactoring
+
 ### 0.0.1.9 Update
 
 - Fixed Bug where "Follow" would block "see more replys" and "View all replies"
