@@ -5,6 +5,7 @@ function save_options() {
   const sponsoredAdsSiteWide = document.getElementById('sponsoredAdsSiteWide').checked
   const pumkSiteWide = document.getElementById('pumkSiteWide').checked
   const videoSiteWide = document.getElementById('videoSiteWide').checked
+  const gamingSiteWide = document.getElementById('gamingSiteWide').checked
   //Hompage - news feed options
   const storiesHomePage = document.getElementById('storiesHomePage').checked
   const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked    
@@ -48,6 +49,7 @@ function save_options() {
     sponsoredAdsSiteWide: sponsoredAdsSiteWide,
     pumkSiteWide: pumkSiteWide,
     videoSiteWide: videoSiteWide,
+    gamingSiteWide: gamingSiteWide,
     //Hompage - news feed options
     storiesHomePage: storiesHomePage,
     reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
@@ -98,20 +100,21 @@ function restore_options() {
   chrome.storage.sync.get({
     //Site options
     sponsoredAdsSiteWide: true,
-    pumkSiteWide: true,
-    videoSiteWide: true,
+    pumkSiteWide: false,
+    videoSiteWide: false,
+    gamingSiteWide: false,
     //Hompage - news feed options
-    storiesHomePage: true,
-    reelsAndShortVideosHomePage: true,      
-    suggestedForYouHomePage: true,        
-    followHomePage: true,
-    paidPartnershipHomePage: true,
-    videoPlaylistHomePage: true,
-    isInHomePage: true,
-    isAtHomePage: true,
-    andHomePage: true,
-    albumHomePage: true,
-    addedANewPhotoToTheAlbumHomePage: true,    
+    storiesHomePage: false,
+    reelsAndShortVideosHomePage: false,      
+    suggestedForYouHomePage: false,        
+    followHomePage: false,
+    paidPartnershipHomePage: false,
+    videoPlaylistHomePage: false,
+    isInHomePage: false,
+    isAtHomePage: false,
+    andHomePage: false,
+    albumHomePage: false,
+    addedANewPhotoToTheAlbumHomePage: false,    
     autoClickSeeMoreHomePage: false,
     removeSeeLessHomePage: false,
     groupsHomePage: false,
@@ -133,7 +136,7 @@ function restore_options() {
     pagesHomePage: false,
     playGamesHomePage: false,
     recentAdActivityHomePage: false,
-    yourProfileHomePage: true,
+    yourProfileHomePage: false,
     suggestedPostsGroupsPage: false,
     suggestedForYouGroupsPage: false,
     friendsGroupsGroupsPage: false
@@ -142,6 +145,7 @@ function restore_options() {
     document.getElementById('sponsoredAdsSiteWide').checked = items.sponsoredAdsSiteWide
     document.getElementById('pumkSiteWide').checked = items.pumkSiteWide
     document.getElementById('videoSiteWide').checked = items.videoSiteWide
+    document.getElementById('gamingSiteWide').checked = items.gamingSiteWide
     //Hompage - news feed options
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
     document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage        

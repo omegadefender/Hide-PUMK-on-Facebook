@@ -6,6 +6,10 @@ The only data that this extension uses are the options you select.
 
 Please log feature requests, or bug reports on the [Github Repo](https://github.com/omegadefender/Zucker/issues)
 
+### 0.0.2.1 Update
+
+- Added Options to remove Gaming from the Navbar
+
 ### 0.0.2.0 Update
 
 - condensed block ads options into one global option

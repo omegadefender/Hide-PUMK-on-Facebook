@@ -43,21 +43,21 @@ let observer = new MutationObserver(function(mutations, observer) {
   mutations.forEach(function(mutation) {
     if (mutation.addedNodes.length > 0) {
       const url = urlChopper(window.location.href)
-      site_wide_options.forEach(function (filter) {
-        if (filter.length == 1){
-          filter(url)
+      site_wide_options.forEach(function (option) {
+        if (option.length == 1){
+          option(url)
         } else {
-          filter()
+          option()
         }        
       })      
       if ((url == '' || url == '?sk=h_chr')) {
-        home_page_options.forEach(function (filter) {
-          filter()
+        home_page_options.forEach(function (option) {
+          option()
         }) 
       }
       else if (url == 'groups/feed/') {
-        group_page_options.forEach(function (filter) {
-          filter()
+        group_page_options.forEach(function (option) {
+          option()
         })
       }      
     }
@@ -127,6 +127,15 @@ function videoSiteWide() {
   if (html != null) {
     html.remove()
   } 
+}
+
+function gamingSiteWide() {
+  const xPath = "//a[contains(@aria-label, 'Gaming')]/ancestor::li"
+  const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (html != null) {
+    html.remove()
+  }
+
 }
 
 //Home Page News Feed Options
