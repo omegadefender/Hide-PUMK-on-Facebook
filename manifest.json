@@ -18,5 +18,6 @@
   },
   "permissions": [
     "storage"
-  ]
+  ],
+  "description": "Zucker is an extension that hides facebook features."
 }
