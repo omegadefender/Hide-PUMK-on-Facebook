@@ -69,8 +69,8 @@ observer.observe(node, config);
 //SiteWide options
 function sponsoredAdsSiteWide(url) {
   if (url == '') {
-    const xpath_feed = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
-    const xpath_right_rail = "//span[text() = 'Sponsored']/ancestor::div[contains(@data-pagelet, 'RightRail')]/*[1]"
+    const xpath_feed = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@class, 'x1lliihq')]"
+    const xpath_right_rail = "//span[text() = 'Sponsored']/ancestor::div[8]"
     const html_feed = document.evaluate(xpath_feed, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     const html_right_rail = document.evaluate(xpath_right_rail, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     if (html_feed != null) {
@@ -88,18 +88,25 @@ function sponsoredAdsSiteWide(url) {
     }
   } else if (url.includes('marketplace')) {
       //marketplace
+      /*const xpath_text = "//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[1]"
+      const html_text = document.evaluate(xpath_text, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+      if (html_text != null) {
+        const xpath_image = 
+        html_text.remove()
+      }*/
+      const marketplace_items = document.querySelector('div[aria-label="Collection of Marketplace items"]') 
       let browse_feed_array = []
-      browse_feed_array = document.querySelectorAll('div[data-pagelet*="BrowseFeedUpsell_"]')
+      browse_feed_array = marketplace_items.querySelectorAll('div[class=""]')
       browse_feed_array.forEach((upsell_feed => {
         const xpath_text = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[1]"
-        const xpath_image = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[contains(@data-pagelet, 'BrowseFeedUpsell_')]/descendant::div[18]"
+        const xpath_image = ".//a[contains(@aria-label, 'image')][1]/ancestor::li"
         const html_text = document.evaluate(xpath_text, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
         const html_image = document.evaluate(xpath_image, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
         if (html_text != null) {
           html_text.remove()
           html_image.remove()
         }
-      }))    
+      }))
     }
 }
 
@@ -140,14 +147,15 @@ function gamingSiteWide() {
 
 //Home Page News Feed Options
 function storiesHomePage() {
-  const html = document.querySelector('[data-pagelet="Stories"]')
+  const xpath = "//div[contains(@aria-label, 'Stories')]/ancestor::div[5]"
+  const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
   }
 }
 
 function reelsAndShortVideosHomePage() {
-  const xpath = "//span[text() = 'Reels and short videos']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = 'Reels and short videos']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -155,7 +163,7 @@ function reelsAndShortVideosHomePage() {
 }
 
 function suggestedForYouHomePage() {
-  const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -163,7 +171,7 @@ function suggestedForYouHomePage() {
 }
 
 function followHomePage() {
-  const xpath = "//span[text() = 'Follow']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = 'Follow']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -187,7 +195,7 @@ function videoPlaylistHomePage() {
 }
 
 function isInHomePage() {
-  const xpath = "//span[text() = ' is in ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = ' is in ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
