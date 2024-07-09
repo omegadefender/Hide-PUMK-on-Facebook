@@ -25,7 +25,7 @@ function onError(e) {
   console.log(e);
 }
 
-let defunctOptions = ["sponsoredAdHomePage"]
+let defunctOptions = ["sponsoredAdHomePage", "yourProfileHomePage"]
 let removeDefunctOptions = chrome.storage.sync.remove(defunctOptions);
 removeDefunctOptions.then(onRemoved, onError);
 
@@ -81,25 +81,20 @@ function sponsoredAdsSiteWide(url) {
     }
   } else if (url == '?filter=all&sk=h_chr'){
     //Feeds
-    const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    const xpath = "//a[contains(@href, '/ads/about/')]/ancestor::div[contains(@class, 'x1lliihq')]"
     const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     if (html != null) {
       html.remove()
+      console.log("feed ad removed")
     }
   } else if (url.includes('marketplace')) {
       //marketplace
-      /*const xpath_text = "//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[1]"
-      const html_text = document.evaluate(xpath_text, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-      if (html_text != null) {
-        const xpath_image = 
-        html_text.remove()
-      }*/
       const marketplace_items = document.querySelector('div[aria-label="Collection of Marketplace items"]') 
       let browse_feed_array = []
       browse_feed_array = marketplace_items.querySelectorAll('div[class=""]')
       browse_feed_array.forEach((upsell_feed => {
         const xpath_text = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[1]"
-        const xpath_image = ".//a[contains(@aria-label, 'image')][1]/ancestor::li"
+        const xpath_image = ".//a[contains(@href, '/ads/about/?entry_product=ad_preferences')]/ancestor::div[5]/div[2]/div"
         const html_text = document.evaluate(xpath_text, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
         const html_image = document.evaluate(xpath_image, upsell_feed, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
         if (html_text != null) {
@@ -114,7 +109,7 @@ function pumkSiteWide(url) {
   let xpath = ""
   let html = null
   if (url == '') {
-    xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+    xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@class, 'x1lliihq')]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue 
   } else if (url == 'friends') {
     xpath = "//span[text() = 'People you may know']/ancestor::div[9]"
@@ -179,7 +174,7 @@ function followHomePage() {
 }
 
 function paidPartnershipHomePage() {
-  const xpath = "//span[text() = 'Paid partnership']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = 'Paid partnership']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -187,7 +182,7 @@ function paidPartnershipHomePage() {
 }
 
 function videoPlaylistHomePage() {
-  const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = ' posted a video to the playlist ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -203,7 +198,7 @@ function isInHomePage() {
 }
 
 function isAtHomePage() {
-  const xpath = "//span[text() = ' is at ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = ' is at ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -211,7 +206,7 @@ function isAtHomePage() {
 }
 
 function andHomePage() {
-  const xpath = "//span[text() = ' and ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = ' and ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -219,7 +214,7 @@ function andHomePage() {
 }
 
 function albumHomePage() {
-  const xpath = "//span[text() = 'Album ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = 'Album ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -227,7 +222,7 @@ function albumHomePage() {
 }
 
 function addedANewPhotoToTheAlbumHomePage() {
-  const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::div[contains(@data-pagelet, 'FeedUnit_')]"
+  const xpath = "//span[text() = ' added a new photo to the album ']/ancestor::div[contains(@class, 'x1lliihq')]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -276,7 +271,6 @@ function videoHomePage() {
     div.remove()
   } 
 }
-
 
 function memoriesHomePage() {
   const xPath = "//span[text() = 'Memories']/ancestor::li"
@@ -405,13 +399,14 @@ function recentAdActivityHomePage() {
     div.remove()
   } 
 }
+/*
 function yourProfileHomePage() {
-  const xPath = "//div[@class='x1iyjqo2']/ul[1]"
-  const div = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
-  if (div != null) {
-    div.remove()
+  const left_sidebar_xpath = "//div[contains(@aria-label, 'Shortcuts')]/descendant::li[1]"
+  const left_sidebar_html = document.evaluate(left_sidebar_xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
+  if (left_sidebar_html != null) {
+    left_sidebar_html.remove()
   } 
-}
+}*/
 
 //Groups Feed options
 function suggestedPostsGroupsPage() {

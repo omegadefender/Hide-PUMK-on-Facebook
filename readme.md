@@ -8,8 +8,9 @@ Please log feature requests, or bug reports on the [Github Repo](https://github.
 
 ### 0.0.2.1 Update
 
+- Adjusted code to work with new FB changes
 - Added Options to remove Gaming from the Navbar
-- fixed duplicate desription text
+- fixed duplicate description text
 
 ### 0.0.2.0 Update
 

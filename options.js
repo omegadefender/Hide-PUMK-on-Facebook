@@ -39,7 +39,6 @@ function save_options() {
   const pagesHomePage = document.getElementById('pagesHomePage').checked
   const playGamesHomePage = document.getElementById('playGamesHomePage').checked
   const recentAdActivityHomePage = document.getElementById('recentAdActivityHomePage').checked
-  const yourProfileHomePage = document.getElementById('yourProfileHomePage').checked
   const suggestedPostsGroupsPage = document.getElementById('suggestedPostsGroupsPage').checked
   const suggestedForYouGroupsPage = document.getElementById('suggestedForYouGroupsPage').checked
   const friendsGroupsGroupsPage = document.getElementById('friendsGroupsGroupsPage').checked
@@ -83,7 +82,6 @@ function save_options() {
     pagesHomePage: pagesHomePage,
     playGamesHomePage: playGamesHomePage,
     recentAdActivityHomePage: recentAdActivityHomePage,
-    yourProfileHomePage: yourProfileHomePage,
     suggestedPostsGroupsPage: suggestedPostsGroupsPage,
     suggestedForYouGroupsPage: suggestedForYouGroupsPage,
     friendsGroupsGroupsPage: friendsGroupsGroupsPage
@@ -136,7 +134,6 @@ function restore_options() {
     pagesHomePage: false,
     playGamesHomePage: false,
     recentAdActivityHomePage: false,
-    yourProfileHomePage: false,
     suggestedPostsGroupsPage: false,
     suggestedForYouGroupsPage: false,
     friendsGroupsGroupsPage: false
@@ -179,7 +176,6 @@ function restore_options() {
     document.getElementById('pagesHomePage').checked = items.pagesHomePage
     document.getElementById('playGamesHomePage').checked = items.playGamesHomePage
     document.getElementById('recentAdActivityHomePage').checked = items.recentAdActivityHomePage
-    document.getElementById('yourProfileHomePage').checked = items.yourProfileHomePage
     document.getElementById('suggestedPostsGroupsPage').checked = items.suggestedPostsGroupsPage
     document.getElementById('suggestedForYouGroupsPage').checked = items.suggestedForYouGroupsPage
     document.getElementById('friendsGroupsGroupsPage').checked = items.friendsGroupsGroupsPage        
