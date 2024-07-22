@@ -44,7 +44,7 @@ let observer = new MutationObserver(function(mutations, observer) {
     if (mutation.addedNodes.length > 0) {
       const url = urlChopper(window.location.href)
       site_wide_options.forEach(function (option) {
-        if (option.length == 1){
+        if (option.length = 1){
           option(url)
         } else {
           option()
@@ -79,7 +79,7 @@ function sponsoredAdsSiteWide(url) {
     if (html_right_rail != null) {
       html_right_rail.remove()
     }
-  } else if (url == '?filter=all&sk=h_chr'){
+  } else if (url.includes('?filter=all&sk=h_chr')){
     //Feeds
     const xpath = "//a[contains(@href, '/ads/about/')]/ancestor::div[contains(@class, 'x1lliihq')]"
     const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
@@ -111,7 +111,7 @@ function pumkSiteWide(url) {
   if (url == '') {
     xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@class, 'x1lliihq')]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue 
-  } else if (url == 'friends') {
+  } else if (url.includes("friends")) {
     xpath = "//span[text() = 'People you may know']/ancestor::div[9]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   } else {
@@ -410,7 +410,7 @@ function yourProfileHomePage() {
 
 //Groups Feed options
 function suggestedPostsGroupsPage() {
-  const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const xPath = "//span[text() = 'Suggested post from a public group']/ancestor::div[19]"
   const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -418,7 +418,7 @@ function suggestedPostsGroupsPage() {
 }
 
 function suggestedForYouGroupsPage() {
-  const xPath = "//span[text() = 'Suggested for you']/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const xPath = "//span[text() = 'Suggested for you']/ancestor::div[17]"
   const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
@@ -426,7 +426,7 @@ function suggestedForYouGroupsPage() {
 }
 
 function friendsGroupsGroupsPage() {
-  const xPath = "//span[text() = \"Friends' groups\"]/ancestor::div[contains(@data-pagelet, 'GroupsFeed_')]"
+  const xPath = "//span[text() = \"Friends' groups\"]/ancestor::div[]"
   const html = document.evaluate(xPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
