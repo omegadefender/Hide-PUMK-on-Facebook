@@ -9,6 +9,7 @@ Please log feature requests, or bug reports on the [Github Repo](https://github.
 ### 0.0.2.2 Update
 
 - Fixed Suggested for You on Groups
+- Fixed sponsored ads not being blocked on Feeds
 
 ### 0.0.2.1 Update
 

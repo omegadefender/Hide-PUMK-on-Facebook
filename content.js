@@ -81,12 +81,12 @@ function sponsoredAdsSiteWide(url) {
     }
   } else if (url.includes('?filter=all&sk=h_chr')){
     //Feeds
-    const xpath = "//a[contains(@href, '/ads/about/')]/ancestor::div[contains(@class, 'x1lliihq')]"
+    const xpath = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@class, 'x1lliihq')]"
     const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
     if (html != null) {
       html.remove()
       console.log("feed ad removed")
-    }
+    }   
   } else if (url.includes('marketplace')) {
       //marketplace
       const marketplace_items = document.querySelector('div[aria-label="Collection of Marketplace items"]') 
@@ -142,7 +142,7 @@ function gamingSiteWide() {
 
 //Home Page News Feed Options
 function storiesHomePage() {
-  const xpath = "//div[contains(@aria-label, 'Stories')]/ancestor::div[5]"
+  const xpath = "//a[contains(@href, '/stories/create/')]/ancestor::div[10]"
   const html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue
   if (html != null) {
     html.remove()
