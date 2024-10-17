@@ -9,7 +9,7 @@
     </head>
     <body>
         <h1>Options for Zucker: The extension Facebook doesn't want you to use</h1>
-        <h3>Version 0.0.2.2</h3>
+        <h3>Version 0.0.2.3</h3>
         <p>Submit a feature request or bug report on my <a href="https://github.com/omegadefender/Zucker/issues" target="_blank">Github Page</a></p4>
         <div id="status" style="visibility: hidden;">Options saved. You will need to reload the browser tab running Facebook to see effects</div><br>
         <button id="save">Save</button>
@@ -28,7 +28,10 @@
         </label><br><br>
         <hr>  
         <h3>Homepage - News Feed options</h3>
-        <div>            
+        <div>
+            <label>
+                <input type="checkbox" id="joinHomePage">Hide "Join"
+            </label><br>
             <label>
                 <input type="checkbox" id="storiesHomePage">Hide "stories"
             </label><br>            
@@ -91,8 +94,11 @@
                 <br>
                 <input type="checkbox" id="bloodDonationsHomePage">
                 <label for="bloodDonationsHomePage">Hide "Blood Donations"</label>
+                <br>
+                <input type="checkbox" id="reelsHomePage">
+                <label for="reelsHomePage">Hide "Reels"</label>
             </div>
-            <div>               
+            <div>                           
                 <input type="checkbox" id="removeSeeLessHomePage">
                 <label for="removeSeeLessHomePage">Auto hide the "See less" button</label>
                 <br>
@@ -120,8 +126,14 @@
                 <input type="checkbox" id="fundraisersHomePage">
                 <label for="fundraisersHomePage">Hide "Fundraisers"</label>
                 <br>
-                <input type="checkbox" id="metaQuestHomePage">
-                <label for="metaQuestHomePage">Hide "Meta Quest"</label>    
+                <input type="checkbox" id="metaQuest3SHomePage">
+                <label for="metaQuest3SHomePage">Hide "Meta Quest 3S"</label>
+                <br>
+                <input type="checkbox" id="birthdaysHomePage">
+                <label for="birthdaysHomePage">Hide "Birthdays"</label>
+                <br>
+                <input type="checkbox" id="feedsHomePage">
+                <label for="feedsHomePage">Hide "Feeds"</label>
             </div>           
         </div>
         <br><hr>

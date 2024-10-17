@@ -7,6 +7,7 @@ function save_options() {
   const videoSiteWide = document.getElementById('videoSiteWide').checked
   const gamingSiteWide = document.getElementById('gamingSiteWide').checked
   //Hompage - news feed options
+  const joinHomePage = document.getElementById('joinHomePage').checked
   const storiesHomePage = document.getElementById('storiesHomePage').checked
   const reelsAndShortVideosHomePage = document.getElementById('reelsAndShortVideosHomePage').checked    
   const suggestedForYouHomePage = document.getElementById('suggestedForYouHomePage').checked    
@@ -34,7 +35,7 @@ function save_options() {
   const marketplaceHomePage = document.getElementById('marketplaceHomePage').checked
   const messengerHomePage = document.getElementById('messengerHomePage').checked
   const messengerKidsHomePage = document.getElementById('messengerKidsHomePage').checked
-  const metaQuestHomePage = document.getElementById('metaQuestHomePage').checked
+  const metaQuest3SHomePage = document.getElementById('metaQuest3SHomePage').checked
   const ordersPaymentsHomePage = document.getElementById('ordersPaymentsHomePage').checked
   const pagesHomePage = document.getElementById('pagesHomePage').checked
   const playGamesHomePage = document.getElementById('playGamesHomePage').checked
@@ -42,6 +43,9 @@ function save_options() {
   const suggestedPostsGroupsPage = document.getElementById('suggestedPostsGroupsPage').checked
   const suggestedForYouGroupsPage = document.getElementById('suggestedForYouGroupsPage').checked
   const friendsGroupsGroupsPage = document.getElementById('friendsGroupsGroupsPage').checked
+  const birthdaysHomePage = document.getElementById('birthdaysHomePage').checked
+  const reelsHomePage = document.getElementById('reelsHomePage').checked
+  const feedsHomePage = document.getElementById('feedsHomePage').checked
 
   chrome.storage.sync.set({
     //Site options
@@ -50,6 +54,7 @@ function save_options() {
     videoSiteWide: videoSiteWide,
     gamingSiteWide: gamingSiteWide,
     //Hompage - news feed options
+    joinHomePage: joinHomePage,
     storiesHomePage: storiesHomePage,
     reelsAndShortVideosHomePage: reelsAndShortVideosHomePage,
     suggestedForYouHomePage: suggestedForYouHomePage,        
@@ -77,14 +82,17 @@ function save_options() {
     marketplaceHomePage: marketplaceHomePage,
     messengerHomePage: messengerHomePage,
     messengerKidsHomePage: messengerKidsHomePage,
-    metaQuestHomePage: metaQuestHomePage,
+    metaQuest3SHomePage: metaQuest3SHomePage,
     ordersPaymentsHomePage: ordersPaymentsHomePage,
     pagesHomePage: pagesHomePage,
     playGamesHomePage: playGamesHomePage,
     recentAdActivityHomePage: recentAdActivityHomePage,
     suggestedPostsGroupsPage: suggestedPostsGroupsPage,
     suggestedForYouGroupsPage: suggestedForYouGroupsPage,
-    friendsGroupsGroupsPage: friendsGroupsGroupsPage
+    friendsGroupsGroupsPage: friendsGroupsGroupsPage,
+    birthdaysHomePage: birthdaysHomePage,
+    reelsHomePage: reelsHomePage,
+    feedsHomePage: feedsHomePage
   }, function() {
     const status = document.getElementById('status')
     status.style.visibility = 'visible'
@@ -102,6 +110,7 @@ function restore_options() {
     videoSiteWide: false,
     gamingSiteWide: false,
     //Hompage - news feed options
+    joinHomePage: true,
     storiesHomePage: false,
     reelsAndShortVideosHomePage: false,      
     suggestedForYouHomePage: false,        
@@ -129,14 +138,17 @@ function restore_options() {
     marketplaceHomePage: false,
     messengerHomePage: false,
     messengerKidsHomePage: false,
-    metaQuestHomePage: false,
     ordersPaymentsHomePage: false,
     pagesHomePage: false,
     playGamesHomePage: false,
     recentAdActivityHomePage: false,
     suggestedPostsGroupsPage: false,
     suggestedForYouGroupsPage: false,
-    friendsGroupsGroupsPage: false
+    friendsGroupsGroupsPage: false,
+    metaQuest3SHomePage: false,
+    birthdaysHomePage: false,
+    reelsHomePage: false,
+    feedsHomePage: false
 }, function(items) {
     //Site options  
     document.getElementById('sponsoredAdsSiteWide').checked = items.sponsoredAdsSiteWide
@@ -144,6 +156,7 @@ function restore_options() {
     document.getElementById('videoSiteWide').checked = items.videoSiteWide
     document.getElementById('gamingSiteWide').checked = items.gamingSiteWide
     //Hompage - news feed options
+    document.getElementById('joinHomePage').checked = items.joinHomePage
     document.getElementById('storiesHomePage').checked = items.storiesHomePage
     document.getElementById('reelsAndShortVideosHomePage').checked = items.reelsAndShortVideosHomePage        
     document.getElementById('suggestedForYouHomePage').checked = items.suggestedForYouHomePage    
@@ -171,14 +184,17 @@ function restore_options() {
     document.getElementById('marketplaceHomePage').checked = items.marketplaceHomePage
     document.getElementById('messengerHomePage').checked = items.messengerHomePage
     document.getElementById('messengerKidsHomePage').checked = items.messengerKidsHomePage
-    document.getElementById('metaQuestHomePage').checked = items.metaQuestHomePage
+    document.getElementById('metaQuest3SHomePage').checked = items.metaQuest3SHomePage
     document.getElementById('ordersPaymentsHomePage').checked = items.ordersPaymentsHomePage
     document.getElementById('pagesHomePage').checked = items.pagesHomePage
     document.getElementById('playGamesHomePage').checked = items.playGamesHomePage
     document.getElementById('recentAdActivityHomePage').checked = items.recentAdActivityHomePage
     document.getElementById('suggestedPostsGroupsPage').checked = items.suggestedPostsGroupsPage
     document.getElementById('suggestedForYouGroupsPage').checked = items.suggestedForYouGroupsPage
-    document.getElementById('friendsGroupsGroupsPage').checked = items.friendsGroupsGroupsPage        
+    document.getElementById('friendsGroupsGroupsPage').checked = items.friendsGroupsGroupsPage  
+    document.getElementById('birthdaysHomePage').checked = items.birthdaysHomePage
+    document.getElementById('reelsHomePage').checked = items.reelsHomePage 
+    document.getElementById('feedsHomePage').checked = items.feedsHomePage            
   });
 }
   

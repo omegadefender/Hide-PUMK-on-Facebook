@@ -6,6 +6,10 @@ The only data that this extension uses are the options you select.
 
 Please log feature requests, or bug reports on the [Github Repo](https://github.com/omegadefender/Zucker/issues)
 
+### 0.0.2.3 Update
+
+- Added default feature to block "join" posts from homepage newsfeed
+
 ### 0.0.2.2 Update
 
 - Fixed Suggested for You on Groups
