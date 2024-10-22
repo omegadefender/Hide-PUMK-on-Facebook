@@ -9,6 +9,7 @@ Please log feature requests, or bug reports on the [Github Repo](https://github.
 ### 0.0.2.3 Update
 
 - Added default feature to block "join" posts from homepage newsfeed
+- Options to remove Birthdays, MetaQuest 3S, Feed, and Reels from Homepage sidebar 
 
 ### 0.0.2.2 Update
 

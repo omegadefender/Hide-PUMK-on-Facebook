@@ -18,7 +18,7 @@ chrome.storage.sync.get(function(options) {
 })
 
 function onRemoved() {
-  console.log("Defunct option removed");
+  console.log("Zucker Ext - Defunct options removed");
 }
 
 function onError(e) {
