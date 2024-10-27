@@ -76,7 +76,7 @@ observer.observe(node, config);
 //SiteWide options
 function sponsoredAdsSiteWide(url) {
   if (url == '') {
-    const xPath_feed = "//div[contains(@class, 'sponsored_ad')]/ancestor::div[contains(@class, 'x1lliihq')]"
+    const xPath_feed = "//span[contains(@data-ad-rendering-role, 'sponsored_label')]/ancestor::div[23]"    
     const xPath_right_rail = "//span[text() = 'Sponsored']/ancestor::div[8]"
     htmlChopper(xPath_feed)
     htmlChopper(xPath_right_rail)
@@ -106,7 +106,7 @@ function pumkSiteWide(url) {
   let xpath = ""
   let html = null
   if (url == '') {
-    xpath = "//span[text() = 'People you may know']/ancestor::div[contains(@class, 'x1lliihq')]"
+    xpath = "//span[text() = 'People you may know']/ancestor::div[20]"
     html = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue 
   } else if (url.includes("friends")) {
     xpath = "//span[text() = 'People you may know']/ancestor::div[9]"
@@ -132,7 +132,7 @@ function gamingSiteWide() {
 
 //Home Page News Feed Options
 function joinHomePage() {
-  const xPath = "//span[text() = 'Join']/ancestor::div[contains(@class, 'x1lliihq')]"
+  const xPath = "//span[text() = 'Join']/ancestor::div[25]"
   htmlChopper(xPath)
 }
 
@@ -142,7 +142,7 @@ function storiesHomePage() {
 }
 
 function reelsAndShortVideosHomePage() {
-  const xPath = "//span[text() = 'Reels and short videos']/ancestor::div[contains(@class, 'x1lliihq')]"
+  const xPath = "//span[text() = 'Reels and short videos']/ancestor::div[22]"
   htmlChopper(xPath)
 }
 
@@ -152,7 +152,7 @@ function suggestedForYouHomePage() {
 }
 
 function followHomePage() {
-  const xPath = "//span[text() = 'Follow']/ancestor::div[contains(@class, 'x1lliihq')]"
+  const xPath = "//span[text() = 'Follow']/ancestor::div[24]"
   htmlChopper(xPath)
 }
 
